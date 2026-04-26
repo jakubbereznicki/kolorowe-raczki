@@ -1,6 +1,10 @@
 /**
- * Skanuje `content-site/<temat>/{strona główna|podstrona}/`
+ * Skanuje `content-site/<temat-slug>/{strona-glowna|podstrona}/`
  * i zapisuje manifest do assets/content-manifest.json
+ *
+ * Foldery na dysku trzymamy jako ASCII-slug (bez spacji i polskich znaków),
+ * żeby działały bez kombinowania na GitHub Pages (case-sensitive Linux).
+ * Ładne nazwy do wyświetlania mapuje LABELS poniżej.
  */
 import { readdir, readFile, stat, writeFile, mkdir } from 'node:fs/promises';
 import { join, normalize } from 'node:path';
@@ -10,33 +14,33 @@ const ROOT = process.cwd();
 const CONTENT_DIR = join(ROOT, 'content-site');
 const OUT = join(ROOT, 'assets', 'content-manifest.json');
 
-const HOME_NAME = 'strona główna';
+const HOME_NAME = 'strona-glowna';
 const SUB_NAME = 'podstrona';
 
 const IMG_EXT = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg']);
 const PDF_EXT = new Set(['.pdf']);
 
-const PL_MAP = {
-  ą: 'a',
-  ć: 'c',
-  ę: 'e',
-  ł: 'l',
-  ń: 'n',
-  ó: 'o',
-  ś: 's',
-  ź: 'z',
-  ż: 'z',
+/** Slug folderu na dysku → ładna nazwa do wyświetlenia. */
+const LABELS = {
+  'dzienny-opiekun': 'Dzienny opiekun',
+  galeria: 'Galeria',
+  kontakt: 'Kontakt',
+  'o-nas': 'O nas',
+  'pakiety-urodzinowe': 'Pakiety urodzinowe',
+  polkolonie: 'Półkolonie',
+  rezerwacje: 'Rezerwacje',
+  'warsztaty-okazjonalne': 'Warsztaty okazjonalne',
+  'warsztaty-w-kolorowych-raczkach': 'Warsztaty w Kolorowych Rączkach',
+  'zajecia-cykliczne-w-placowkach': 'Zajęcia cykliczne w placówkach',
 };
 
-function slugify(dirName) {
-  let s = dirName.toLowerCase();
-  for (const [pl, lat] of Object.entries(PL_MAP)) {
-    s = s.split(pl).join(lat);
-  }
-  return s
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')
-    .slice(0, 80);
+function prettyLabelFromSlug(slug) {
+  if (LABELS[slug]) return LABELS[slug];
+  return slug
+    .split('-')
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ');
 }
 
 function fileType(ext) {
@@ -75,8 +79,8 @@ async function extractPdfText(filePath) {
   }
 }
 
-async function listMediaFiles(topicLabel, subFolderName) {
-  const dirPath = join(CONTENT_DIR, topicLabel, subFolderName);
+async function listMediaFiles(topicSlug, subFolderName) {
+  const dirPath = join(CONTENT_DIR, topicSlug, subFolderName);
   try {
     const names = await readdir(dirPath);
     const out = [];
@@ -91,7 +95,7 @@ async function listMediaFiles(topicLabel, subFolderName) {
       const entry = {
         name,
         type,
-        url: buildContentUrl(topicLabel, subFolderName, name),
+        url: buildContentUrl(topicSlug, subFolderName, name),
       };
       if (type === 'pdf') {
         // eslint-disable-next-line no-await-in-loop
@@ -122,22 +126,22 @@ async function main() {
 
   for (const ent of entries) {
     if (!ent.isDirectory()) continue;
-    const label = ent.name;
-    const slug = slugify(label);
-    if (!slug) continue;
+    const slug = ent.name;
+    if (!/^[a-z0-9-]+$/.test(slug)) continue;
+    const label = prettyLabelFromSlug(slug);
 
     let homeFiles = [];
     let subFiles = [];
     try {
-      if (await stat(join(CONTENT_DIR, label, HOME_NAME)).then((s) => s.isDirectory())) {
-        homeFiles = await listMediaFiles(label, HOME_NAME);
+      if (await stat(join(CONTENT_DIR, slug, HOME_NAME)).then((s) => s.isDirectory())) {
+        homeFiles = await listMediaFiles(slug, HOME_NAME);
       }
     } catch {
-      /* no strona główna */
+      /* no strona-glowna */
     }
     try {
-      if (await stat(join(CONTENT_DIR, label, SUB_NAME)).then((s) => s.isDirectory())) {
-        subFiles = await listMediaFiles(label, SUB_NAME);
+      if (await stat(join(CONTENT_DIR, slug, SUB_NAME)).then((s) => s.isDirectory())) {
+        subFiles = await listMediaFiles(slug, SUB_NAME);
       }
     } catch {
       /* no podstrona */
