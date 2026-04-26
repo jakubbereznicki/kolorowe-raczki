@@ -1,0 +1,65 @@
+@use "../tokens" as *;
+@use "../mixins" as *;
+
+.hasDropdown {
+  position: relative;
+}
+
+.dropdown {
+  list-style: none;
+  padding: 8px;
+  margin: 0;
+  min-width: 220px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border-radius: $radius-lg;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(47, 157, 92, 0.18);
+  box-shadow: $shadow-md;
+  transform-origin: top left;
+  // No physical gap (prevents hover drop). Visual spacing via transform.
+  transform: translateY(2px) scale(0.98);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.hasDropdown[data-open="true"] > .dropdown {
+  opacity: 1;
+  transform: translateY(8px) scale(1);
+  pointer-events: auto;
+}
+
+.dropdownLink {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-weight: 800;
+  color: $blue-900;
+  transition: background 140ms ease;
+}
+
+.dropdownLink:hover {
+  background: rgba(47, 157, 92, 0.1);
+}
+
+@include down($bpMd) {
+  .dropdown {
+    position: static;
+    min-width: auto;
+    box-shadow: none;
+    border-radius: $radius-md;
+    background: rgba(47, 157, 92, 0.06);
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    border: 1px solid rgba(47, 157, 92, 0.14);
+    display: none;
+  }
+
+  .hasDropdown[data-open="true"] > .dropdown {
+    display: block;
+  }
+}
+

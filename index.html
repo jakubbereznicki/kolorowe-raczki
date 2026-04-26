@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Kolorowe Centrum — zajęcia dla dzieci 0–12</title>
+    <meta
+      name="description"
+      content="Kolorowe Centrum — zajęcia dodatkowe i rozwój przez zabawę dla dzieci 0–12 lat. Galeria, kalendarz, kontakt."
+    />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Quicksand:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <a class="skipLink" href="#main">Przejdź do treści</a>
+
+    <header class="siteHeader" data-reveal="down">
+      <div class="container headerInner">
+        <a class="brand" href="/" data-link aria-label="Kolorowe Rączki — strona główna">
+          <img class="brandMark" src="/assets/logo-kolorowe-raczki.png" width="52" height="52" alt="" />
+          <span class="brandText" data-brand-text aria-hidden="true"></span>
+        </a>
+
+        <button class="navToggle" type="button" aria-label="Otwórz menu" aria-expanded="false" data-nav-toggle>
+          <span class="navToggleBars" aria-hidden="true"></span>
+        </button>
+
+        <nav class="nav" aria-label="Główna nawigacja" data-nav>
+          <ul class="navList" data-nav-list></ul>
+
+          <div class="navCta">
+            <a class="btn btnPrimary" href="/rezerwacje" data-link>Zarezerwuj</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="siteMain">
+      <div id="app" class="appRoot" aria-live="polite"></div>
+    </main>
+
+    <footer class="siteFooter">
+      <div class="container">
+        <div class="footerGrid">
+          <div class="footerBrandBlock">
+            <img
+              class="footerMark"
+              src="/assets/logo-kolorowe-raczki.png"
+              width="56"
+              height="56"
+              alt=""
+            />
+            <div>
+              <div class="footerTitle">Kolorowe Centrum</div>
+              <div class="footerMeta">Zajęcia dodatkowe dla dzieci 0–12 lat</div>
+            </div>
+          </div>
+          <div>
+            <div class="footerColTitle" id="footer-adres">Adres</div>
+            <address aria-labelledby="footer-adres">
+              ul. Nenckiego 127/5<br />
+              52-212 Wrocław
+            </address>
+          </div>
+          <div>
+            <div class="footerColTitle" id="footer-tel">Kontakt</div>
+            <p>
+              tel. <a class="footerLink" href="tel:+48788047214">+48 788 047 214</a><br />
+              e-mail:
+              <a class="footerLink" href="mailto:Biuro.kolorowecentrum@gmail.com">Biuro.kolorowecentrum@gmail.com</a>
+            </p>
+          </div>
+          <div>
+            <div class="footerColTitle" id="footer-godz">Godziny otwarcia</div>
+            <p>pn–nd: 7:00–20:00</p>
+          </div>
+          <div>
+            <div class="footerColTitle">Obserwuj nas</div>
+            <div class="footerSocials" role="list">
+              <button class="footerSocial" type="button" role="listitem" aria-label="Facebook (wkrótce)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                  ><path
+                    d="M22 12a10 10 0 1 0-11.5 9.9v-7H7v-3h3.5V9.2c0-3.4 1.8-5.2 4.6-5.2 1.3 0 2.2.1 2.5.1v2.9h-1.4c-1.1 0-1.4.5-1.4 1.3V12h2.8l-.5 3h-2.3v6.4A10 10 0 0 0 22 12z"
+                /></svg>
+              </button>
+              <button class="footerSocial" type="button" role="listitem" aria-label="Instagram (wkrótce)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                  ><path
+                    d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 2.2a5.8 5.8 0 1 1 0 11.6 5.8 5.8 0 0 1 0-11.6zM7 5.5h.01V7H7V5.5zm5 2.1a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8z"
+                /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="footerBottom">
+          <div class="footerCopy">© <span data-year></span> Kolorowe Centrum</div>
+          <div class="footerLegal">
+            <a class="footerLink" href="/#kontakt" data-link>Kontakt</a>
+            <a class="footerLink" href="/#kalendarz" data-link>Kalendarz</a>
+            <a class="footerLink" href="/#oferta-tematy" data-link>Oferta</a>
+            <span class="footerLink" style="cursor: default; border: 0" aria-disabled="true">Polityka prywatności</span>
+            <span class="footerLink" style="cursor: default; border: 0" aria-disabled="true">Mapa strony</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="lightbox" hidden data-lightbox>
+      <button class="lightboxClose" type="button" aria-label="Zamknij" data-lightbox-close>×</button>
+      <img class="lightboxImg" alt="" data-lightbox-img />
+      <div class="lightboxCaption" data-lightbox-caption></div>
+    </div>
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>
+

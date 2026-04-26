@@ -1,0 +1,225 @@
+@use "../tokens" as *;
+@use "../mixins" as *;
+
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 250, 243, 0.88);
+  border-bottom: 1px solid rgba(47, 157, 92, 0.12);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 76px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
+  color: $blue-900;
+  text-decoration: none;
+}
+
+.brandMark {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+// Napis marki — każda litera w osobnym <span class="brandText__l brandText__l--{color}">
+// generowana przez `decorateBrandText()` (src/js/brandText.js).
+// inline-flex eliminuje białe znaki między tagami, dzięki czemu litery pisane
+// w osobnych liniach DOM-u nie dostają fantomowej spacji.
+.brandText {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: $font-sans;
+  font-weight: 900;
+  font-size: clamp(1rem, 0.92rem + 0.32vw, 1.22rem);
+  letter-spacing: -0.015em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.brandText__l {
+  display: inline-block;
+}
+
+// Spacja między słowami — element zamiast text node, żeby zachować szerokość
+// w kontekście inline-flex (gdzie text-node ze spacją bywa zwijany).
+.brandText__sp {
+  display: inline-block;
+  width: 0.32em;
+}
+
+// Kolory rotujące — odzwierciedlają paletę logo, ale przyciemnione tak,
+// żeby zachować czytelność na kremowym tle headera (kontrast min. ~3.5:1).
+.brandText__l--green {
+  color: #5a9131; // przyciemniony green-500 dla kontrastu
+}
+.brandText__l--coral {
+  color: #d44b3e; // pomiędzy coral-500 a coral-700
+}
+.brandText__l--yellow {
+  color: #c9941b; // ciemny musztardowy — żółty z palety jest za jasny na kremie
+}
+.brandText__l--sky {
+  color: #2585bc; // pomiędzy sky-500 a sky-700
+}
+.brandText__l--orange {
+  color: #d97524; // pomarańcz z logo (brak w tokenach — lokalna definicja)
+}
+
+// Bardzo wąskie ekrany — chowamy napis, samo logo wystarczy żeby utrzymać
+// klikalny brand bez ścieśniania nawigacji.
+@include down(420px) {
+  .brandText {
+    display: none;
+  }
+}
+
+.navToggle {
+  display: none;
+  border: 1px solid rgba(47, 157, 92, 0.22);
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: $radius-md;
+  padding: 10px 12px;
+  box-shadow: $shadow-sm;
+  cursor: pointer;
+}
+
+.navToggleBars {
+  width: 18px;
+  height: 12px;
+  display: inline-block;
+  position: relative;
+}
+
+.navToggleBars::before,
+.navToggleBars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: $blue-900;
+}
+
+.navToggleBars::before {
+  top: 0;
+  box-shadow: 0 5px 0 $blue-900;
+}
+
+.navToggleBars::after {
+  bottom: 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  color: $blue-900;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.navLink:hover {
+  background: rgba(47, 157, 92, 0.1);
+}
+
+.navLink[aria-current="page"] {
+  background: rgba(47, 157, 92, 0.14);
+}
+
+.navLinkBtn {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.chev {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  margin-top: -2px;
+  opacity: 0.75;
+  transition: transform 180ms ease;
+}
+
+.hasDropdown[data-open="true"] .chev {
+  transform: rotate(-135deg);
+}
+
+@include down($bpMd) {
+  .navToggle {
+    display: inline-flex;
+  }
+
+  .nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 76px;
+    padding: 14px 16px 18px;
+    background: rgba(255, 250, 243, 0.97);
+    border-bottom: 1px solid rgba(47, 157, 92, 0.12);
+    backdrop-filter: blur(10px);
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 160ms ease, transform 160ms ease;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .nav[data-open="true"] {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .navList {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navLink {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .navCta .btn {
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,13 @@
+{
+  "name": "kolorowe-centrum-wizytowka",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "start": "node dev-server.js",
+    "build:content": "node scripts/build-content-manifest.mjs"
+  },
+  "devDependencies": {
+    "pdf-parse": "^2.4.5"
+  }
+}

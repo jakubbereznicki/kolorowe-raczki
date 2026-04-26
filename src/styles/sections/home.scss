@@ -1,0 +1,1792 @@
+@use "sass:color" as sc;
+@use "../tokens" as *;
+@use "../mixins" as *;
+
+.section {
+  padding: 56px 0;
+  position: relative;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.sectionHeader--center {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.sectionHeader--center .sectionLead {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Logo nad nagłówkiem „Dlaczego my” (str. gł.)
+.homeDlaczegoLogo {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+.homeDlaczegoLogo__img {
+  display: block;
+  width: min(250px, 100%);
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.sectionKicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: $green-800;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.sectionKickerIcon {
+  width: 22px;
+  height: 22px;
+  color: $yellow-500;
+  flex-shrink: 0;
+}
+
+.sectionKicker--brand {
+  color: $green-800;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: clamp(22px, 2.1vw, 34px);
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  color: $ink;
+}
+
+.sectionTitle .textAccentCoral,
+.sectionTitle .textAccentBlue {
+  font-weight: 800;
+}
+
+.textAccentBlue {
+  color: $sky-600;
+}
+
+.textAccentCoral {
+  color: $coral-500;
+}
+
+.sectionLead {
+  margin: 0;
+  color: $muted;
+  font-weight: 700;
+  max-width: 60ch;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  border-radius: $radius-lg;
+  background: $card;
+  border: 1px solid rgba(47, 157, 92, 0.12);
+  box-shadow: $shadow-sm;
+  padding: 20px 22px;
+}
+
+// Kafle „Dlaczego my” (mock: białe karty, centrum, pełne kolorowe bąble + białe ikony)
+.offersGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+  // +30px względem nagłówka (padding nie zwija się z margin nagłówka jak sąsiednie marginy)
+  padding-top: 30px;
+}
+
+.offersGrid .offerCard {
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid rgba(30, 45, 39, 0.07);
+  box-shadow: 0 2px 10px rgba(30, 45, 39, 0.05), 0 12px 36px rgba(30, 45, 39, 0.06);
+  padding: 28px 22px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  min-height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.offersGrid .offerCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(30, 45, 39, 0.07), 0 20px 44px rgba(30, 45, 39, 0.08);
+}
+
+// Ikony: tylko w tej sekcji — pełny kolor + biały piktogram
+.offersGrid .iconBubble {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.offersGrid .iconBubble .iconSvg {
+  width: 26px;
+  height: 26px;
+  color: #fff;
+  fill: currentColor;
+  display: block;
+}
+
+.pillarIcon .iconSvg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.offersGrid .iconBubble--green {
+  background: $green-500;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(122, 163, 53, 0.35);
+}
+
+.offersGrid .iconBubble--coral {
+  background: $coral-500;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(232, 93, 77, 0.32);
+}
+
+.offersGrid .iconBubble--sky {
+  background: $sky-600;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(42, 140, 200, 0.3);
+}
+
+.offersGrid .iconBubble--yellow {
+  background: $yellow-500;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(240, 193, 75, 0.45);
+}
+
+.offersGrid .offerCard h3 {
+  margin: 0;
+  font-size: clamp(0.98rem, 0.25vw + 0.9rem, 1.1rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: $ink;
+  line-height: 1.3;
+  max-width: 22ch;
+}
+
+.offersGrid .offerCard p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: $muted;
+  line-height: 1.55;
+  max-width: 28ch;
+}
+
+.activitiesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.activityCard {
+  position: relative;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background: $card;
+  border: 1px solid rgba(47, 157, 92, 0.1);
+  box-shadow: $shadow-sm;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.activityCard:hover {
+  transform: translateY(-3px);
+  box-shadow: $shadow-md;
+}
+
+.activityCardLink {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+.activityCardLink:focus-visible {
+  outline: 3px solid rgba(47, 157, 92, 0.45);
+  outline-offset: 2px;
+}
+
+.activityCardImg {
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.activityCardBody {
+  padding: 14px 44px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  position: relative;
+}
+
+.activityCardTitle {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  color: $ink;
+}
+
+.activityCardCta {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, $green-600, $green-500);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-sm;
+  pointer-events: none;
+}
+
+.activityCardCta svg {
+  width: 18px;
+  height: 18px;
+}
+
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.pillarCard {
+  text-align: center;
+  padding: 18px 14px 22px;
+  border-radius: $radius-lg;
+  background: $card;
+  border: 1px solid rgba(47, 157, 92, 0.1);
+  box-shadow: $shadow-sm;
+}
+
+.pillarIcon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 12px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pillarIcon--sky {
+  background: rgba(42, 140, 200, 0.12);
+  color: $sky-600;
+}
+.pillarIcon--green {
+  background: rgba(47, 157, 92, 0.14);
+  color: $green-700;
+}
+.pillarIcon--coral {
+  background: rgba(232, 93, 77, 0.12);
+  color: $coral-500;
+}
+.pillarIcon--yellow {
+  background: rgba(240, 193, 75, 0.22);
+  color: sc.adjust($yellow-500, $lightness: -22%);
+}
+
+.pillarCard h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.pillarCard p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: $muted;
+  line-height: 1.5;
+}
+
+.ctaSection {
+  position: relative;
+}
+
+.ctaGrid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 24px;
+  align-items: center;
+  border-radius: $radius-xl;
+  background: $card;
+  border: 1px solid rgba(47, 157, 92, 0.12);
+  box-shadow: $shadow-md;
+  padding: 28px 28px 32px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ctaGrid::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  right: -80px;
+  top: -100px;
+  background: radial-gradient(circle, rgba(240, 193, 75, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+.ctaCheckList {
+  margin: 16px 0 20px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.ctaCheckList li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-weight: 700;
+  color: $muted;
+  font-size: 15px;
+}
+
+.ctaCheckList .check {
+  background: rgba(47, 157, 92, 0.15);
+  border-color: rgba(47, 157, 92, 0.28);
+  margin-top: 3px;
+  position: relative;
+}
+
+.ctaCheckList .check::after {
+  content: "✓";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 900;
+  color: $green-700;
+}
+
+.ctaMedia {
+  border-radius: $radius-lg;
+  min-height: 220px;
+  background-size: cover;
+  background-position: center 30%;
+  box-shadow: $shadow-sm;
+}
+
+.aboutList {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.aboutList li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-weight: 700;
+  color: $muted;
+}
+
+.check {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: rgba(47, 157, 92, 0.12);
+  border: 1px solid rgba(47, 157, 92, 0.2);
+  margin-top: 2px;
+  flex: 0 0 auto;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 12px;
+}
+
+.galleryItem {
+  grid-column: span 4;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid rgba(47, 157, 92, 0.12);
+  box-shadow: $shadow-sm;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: zoom-in;
+  position: relative;
+}
+
+.galleryItem img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 240ms ease;
+}
+
+.galleryItem:hover img {
+  transform: scale(1.06);
+}
+
+.galleryItem .caption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(30, 45, 39, 0.55);
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: -0.01em;
+}
+
+.calendarWrap {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.calendar {
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid rgba(47, 157, 92, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: $shadow-sm;
+}
+
+.calHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: rgba(47, 157, 92, 0.08);
+  border-bottom: 1px solid rgba(47, 157, 92, 0.12);
+}
+
+.calTitle {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.calGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calCell {
+  padding: 10px 10px 12px;
+  border-right: 1px solid rgba(47, 157, 92, 0.08);
+  border-bottom: 1px solid rgba(47, 157, 92, 0.08);
+  min-height: 54px;
+  display: grid;
+  gap: 6px;
+}
+
+.calCell:nth-child(7n) {
+  border-right: 0;
+}
+
+.calDow {
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(30, 45, 39, 0.75);
+  background: rgba(47, 157, 92, 0.06);
+}
+
+.calDay {
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+.dotMini {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: $green-600;
+  box-shadow: 0 0 0 3px rgba(47, 157, 92, 0.18);
+}
+
+.calCell.isMuted {
+  opacity: 0.55;
+}
+
+.calCell.isToday {
+  outline: 3px solid rgba(42, 140, 200, 0.4);
+  outline-offset: -3px;
+}
+
+.calCell.isSelected {
+  background: rgba(47, 157, 92, 0.1);
+}
+
+.events {
+  border-radius: $radius-lg;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(47, 157, 92, 0.12);
+  box-shadow: $shadow-sm;
+  padding: 16px 18px;
+}
+
+.eventsTitle {
+  font-weight: 900;
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
+}
+
+.eventItem {
+  display: grid;
+  gap: 4px;
+  padding: 10px 10px;
+  border-radius: 16px;
+  border: 1px solid rgba(47, 157, 92, 0.12);
+  background: rgba(47, 157, 92, 0.06);
+}
+
+.eventItem + .eventItem {
+  margin-top: 10px;
+}
+
+.eventMeta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: $muted;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 20px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field label {
+  font-weight: 800;
+  font-size: 13px;
+  color: rgba(30, 45, 39, 0.85);
+}
+
+.field input,
+.field textarea {
+  padding: 12px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(47, 157, 92, 0.18);
+  background: rgba(255, 255, 255, 0.95);
+  outline: none;
+  transition: box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: rgba(47, 157, 92, 0.45);
+  box-shadow: 0 0 0 4px rgba(47, 157, 92, 0.15);
+}
+
+.field textarea {
+  min-height: 120px;
+  resize: vertical;
+  grid-column: span 2;
+}
+
+.muted {
+  color: $muted;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.siteFooter {
+  padding: 40px 0 28px;
+  border-top: 1px solid rgba(47, 157, 92, 0.12);
+  background: $cream;
+  margin-top: auto;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr 1fr 0.9fr;
+  gap: 24px 20px;
+  align-items: start;
+  margin-bottom: 28px;
+}
+
+.footerBrandBlock {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.footerMark {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.footerColTitle {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $muted;
+  margin: 0 0 8px;
+}
+
+.footerCol p,
+.footerCol address {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: $ink;
+  line-height: 1.55;
+  font-style: normal;
+}
+
+.footerLink {
+  color: $green-700;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 140ms ease;
+}
+
+.footerLink:hover {
+  border-bottom-color: currentColor;
+}
+
+.footerSocials {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footerSocial {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid rgba(47, 157, 92, 0.15);
+  color: $ink;
+  box-shadow: $shadow-sm;
+  transition: transform 150ms ease, background 150ms ease;
+  font: inherit;
+  padding: 0;
+  margin: 0;
+  cursor: default;
+  appearance: none;
+}
+
+.footerSocial:hover {
+  transform: translateY(-2px);
+  background: rgba(47, 157, 92, 0.08);
+}
+
+.footerBottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(47, 157, 92, 0.1);
+}
+
+.footerLegal {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footerTitle {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.footerMeta {
+  font-weight: 600;
+  color: $muted;
+  font-size: 13px;
+  line-height: 1.45;
+  margin-top: 4px;
+}
+
+.footerCopy {
+  font-weight: 700;
+  color: $muted;
+  font-size: 12px;
+}
+
+// Reveal-on-scroll — tylko warianty kierunkowe (left / right / down).
+// Bezwartościowy `data-reveal` jest ignorowany świadomie: elementy z samym
+// `data-reveal` pokazują się od razu, bez animacji wjazdu sekcji.
+[data-reveal="left"],
+[data-reveal="right"],
+[data-reveal="down"] {
+  opacity: 0;
+  transition: opacity 760ms ease, transform 760ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+[data-reveal="left"] {
+  transform: translateX(-18px);
+}
+
+[data-reveal="right"] {
+  transform: translateX(18px);
+}
+
+[data-reveal="down"] {
+  transform: translateY(-10px);
+}
+
+.is-visible[data-reveal="left"],
+.is-visible[data-reveal="right"],
+.is-visible[data-reveal="down"] {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+@supports (color: color-mix(in srgb, white, black)) {
+  .iconBubble--yellow {
+    color: color-mix(in srgb, $yellow-500 40%, $ink 60%);
+  }
+  .pillarIcon--yellow {
+    color: color-mix(in srgb, $yellow-500 35%, $ink 65%);
+  }
+}
+
+@include down($bpLg) {
+  .footerGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@include down($bpMd) {
+  .section {
+    padding: 42px 0;
+  }
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+  .offersGrid,
+  .pillarsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .activitiesGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .galleryItem {
+    grid-column: span 6;
+  }
+  .calendarWrap,
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  .field textarea {
+    grid-column: auto;
+  }
+  .ctaGrid {
+    grid-template-columns: 1fr;
+  }
+  .footerGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@include down($bpSm) {
+  .offersGrid,
+  .pillarsGrid,
+  .activitiesGrid {
+    grid-template-columns: 1fr;
+  }
+  .galleryItem {
+    grid-column: span 12;
+  }
+  .footerGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.topicSubpageContent .topicFigure {
+  margin: 0 0 22px;
+}
+
+.topicSubpageContent .topicFigure__img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  display: block;
+}
+
+/* Bogaty układ z PDF (homeRichPdf.js) */
+.homeRich {
+  margin-top: 8px;
+}
+
+.section--homeTopic .sectionHeader {
+  margin-bottom: 20px;
+}
+
+.homeRichMeta {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(30, 45, 39, 0.45);
+}
+
+.homeRichHero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 28px;
+  align-items: start;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 900px) {
+  .homeRichHero {
+    grid-template-columns: 1fr;
+  }
+}
+
+.homeRichHero--cardsOnly {
+  grid-template-columns: 0.4fr 1.1fr;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .homeRichHero--cardsOnly {
+    grid-template-columns: 1fr;
+  }
+}
+
+.homeRichHero__text--wide {
+  max-width: none;
+}
+
+.homeRichP {
+  margin: 0 0 1em;
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(30, 45, 39, 0.9);
+  max-width: 62ch;
+}
+
+.homeRichP:last-child {
+  margin-bottom: 0;
+}
+
+.homeRichKicker {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $green-800;
+  background: linear-gradient(135deg, rgba(122, 163, 53, 0.18), rgba(122, 163, 53, 0.06));
+  border-radius: 999px;
+  border: 1px solid rgba(122, 163, 53, 0.25);
+}
+
+.homeRichBlock {
+  margin-top: 12px;
+}
+
+.homeRichHero__media {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+  background: #e8ecdf;
+  min-height: 220px;
+}
+
+.homeRichHero__media--tall {
+  min-height: 280px;
+}
+
+.homeRichHero__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  object-fit: cover;
+}
+
+.homeRichImgCap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+  background: linear-gradient(0deg, rgba(30, 45, 39, 0.55), transparent);
+}
+
+.homeRichWhy {
+  padding: 22px 24px 24px;
+  border-radius: 18px;
+  background: linear-gradient(160deg, #f3f6eb 0%, #fff 50%);
+  border: 1px solid rgba(122, 163, 53, 0.22);
+  box-shadow: $shadow-sm;
+  margin-bottom: 20px;
+}
+
+.homeRichWhy__title {
+  margin: 0 0 16px;
+  font-size: clamp(18px, 1.4vw, 24px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: $green-800;
+  max-width: 44ch;
+}
+
+.homeRichCheckList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.homeRichCheckItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.homeRichCheck {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  margin-top: 2px;
+  border-radius: 8px;
+  background: linear-gradient(140deg, #7b61ff 0%, #a78bfa 100%);
+  position: relative;
+  box-shadow: 0 4px 12px rgba(123, 97, 255, 0.3);
+}
+
+.homeRichCheck::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 7px;
+  width: 10px;
+  height: 6px;
+  border: 2.5px solid #fff;
+  border-top: 0;
+  border-right: 0;
+  transform: rotate(-45deg);
+}
+
+.homeRichCheckText {
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 650;
+  color: rgba(30, 45, 39, 0.9);
+  max-width: 58ch;
+}
+
+.homeRichOutro {
+  margin: 0 0 20px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: #fafbf8;
+  border: 1px dashed rgba(122, 163, 53, 0.35);
+}
+
+.homeRichOutro .homeRichP {
+  max-width: none;
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  font-style: italic;
+  color: rgba(30, 45, 39, 0.82);
+}
+
+.homeRichActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.homeRichCardGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 700px) {
+  .homeRichCardGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.homeRichCard {
+  display: flex;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(30, 45, 39, 0.08);
+  box-shadow: $shadow-sm;
+  align-items: flex-start;
+}
+
+.homeRichCard__icon {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(122, 163, 53, 0.2), rgba(255, 155, 120, 0.15));
+  color: $green-800;
+}
+
+.homeRichIconSvg {
+  width: 24px;
+  height: 24px;
+}
+
+.homeRichCard__text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(30, 45, 39, 0.88);
+}
+
+.homeRichMoreGallery {
+  margin-top: 24px;
+}
+
+.topicSubpagePdf {
+  margin-bottom: 32px;
+}
+
+.topicSubpagePdf:last-child {
+  margin-bottom: 0;
+}
+
+/* —— Strona główna: baner „O nas” (jak projekt graficzny) + slider —— */
+// Baner: zawsze pełna szerokość viewportu (bez limitu $containerHomeAbout),
+// żeby na każdej rozdzielczości zdjęcie sięgało prawej krawędzi ekranu,
+// a wewnętrzny padding tekstu poniżej trafiał dokładnie pod logo navbara
+// niezależnie od centrowania sekcji.
+.container.homeAbout__container {
+  width: 100%;
+  margin-inline: 0;
+}
+
+.homeAbout.section {
+  padding: 0 0 50px;
+}
+
+// Wypełnia parent (max $containerHomeAbout)
+.homeAboutSlider {
+  position: relative;
+  width: 100%;
+}
+
+.homeAboutSlider__viewport {
+  position: relative;
+  min-height: clamp(500px, 58vh, 700px);
+  // Izolacja painting — slajdy nie wymuszają repaintu reszty strony (m.in. body::before z 9 radialami).
+  contain: layout paint style;
+  isolation: isolate;
+}
+
+.homeAboutSlide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  // Tylko opacity jest animowane; visibility przełącza się "skokowo" (discrete).
+  transition: opacity 0.45s ease;
+  z-index: 0;
+  pointer-events: none;
+  // Promocja do osobnej warstwy GPU — cross-fade odbywa się przez kompozytora,
+  // a nie przez paint na main thread. Eliminuje "przycięcie" całej strony.
+  will-change: opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout paint;
+}
+
+.homeAboutSlide.isActive {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .homeAboutSlide {
+    transition: none;
+  }
+}
+
+// —— karta banerowa: 40% tekst / 60% zdjęcie ——
+.homeHeroBanner {
+  height: 100%;
+  min-height: min(100%, clamp(500px, 58vh, 700px));
+}
+
+.homeHeroBanner__inner {
+  display: grid;
+  // 40/60 w fr (bez błędów sumy procentów) + brak szczeliny kolumny
+  grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
+  column-gap: 0;
+  row-gap: 0;
+  align-items: stretch;
+  min-height: clamp(500px, 58vh, 700px);
+  height: 100%;
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  isolation: isolate;
+}
+
+.homeHeroBanner__textCol {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; // tekst dosunięty do lewej krawędzi 40fr kolumny (nie centrowany)
+  min-height: 100%;
+  background: transparent;
+  // Lewy padding tak dobrany, żeby treść tekstowa zaczynała się DOKŁADNIE
+  // pod logo navbara (.container = min(100% - 32px, 1600px), centrowany).
+  // - Viewport >= 1600px: padding = (100vw - 1600) / 2 = boczny margines navbara.
+  // - Viewport <  1600px: padding = 16px = boczny padding navbara (32/2).
+  // Prawego paddingu nie ruszamy — przestrzeń do styku ze zdjęciem zostaje.
+  padding-left: max(16px, calc((100vw - 1600px) / 2));
+}
+
+.homeHeroBanner__text {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: min(100%, 40rem);
+  max-width: 100%;
+  padding-block: clamp(40px, 4.5vw, 72px) clamp(40px, 4.5vw, 64px);
+  // Lewy padding zdjęty — całość offsetu od lewej krawędzi sekcji daje text-col
+  // (żeby tytuł stał idealnie w jednej linii z lewą krawędzią logo navbara).
+  padding-left: 0;
+  padding-right: clamp(20px, 3.5vw, 40px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
+}
+
+// Tytuł główny — pierwsza sekcja: wyraźnie większy korpus na dużym ekranie
+.homeHeroBanner__title {
+  margin: 0 0 clamp(16px, 1.4vw, 24px);
+  max-width: 100%;
+  font-family: "Quicksand", $font-sans;
+  font-size: clamp(1.45rem, 1.9vw + 0.8rem, 2.75rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: $ink;
+  text-wrap: balance;
+}
+
+.homeHeroBanner__titleLine {
+  display: block;
+}
+
+.homeHeroBanner__titleLine--second {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3em 0.45em;
+  margin-top: 0.14em;
+}
+
+.homeHeroBanner__titleWord--green {
+  color: $green-600;
+}
+
+.homeHeroBanner__titleWord--red {
+  color: #e11d2e; // czerwony akcent słowa „pasje!” (mockup)
+}
+
+.homeHeroBanner__lead {
+  margin: 0 0 clamp(20px, 2.2vw, 28px);
+  font-family: "Quicksand", $font-sans;
+  font-size: clamp(1.12rem, 0.55vw + 0.9rem, 1.32rem);
+  line-height: 1.65;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: $ink;
+  max-width: 40ch;
+  text-wrap: balance;
+}
+
+.homeHeroBanner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 14px;
+  margin-top: 4px;
+}
+
+.homeHeroBanner__actions .btnPrimary {
+  border-radius: 999px;
+  padding: 15px 24px 15px 22px;
+  font-size: 16px;
+  font-weight: 800;
+  box-shadow: 0 4px 22px rgba(122, 163, 53, 0.38);
+  border: 0;
+}
+
+.homeHeroBanner__actions .btnPrimary .homeHeroCta__icon {
+  stroke: #fff;
+  margin-left: 2px;
+}
+
+.homeHeroBanner__actions .btnOutlineDark {
+  border-radius: 999px;
+  padding: 15px 22px;
+  font-size: 16px;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(30, 45, 39, 0.18);
+  color: $ink;
+  box-shadow: 0 2px 12px rgba(30, 45, 39, 0.06);
+}
+
+.homeHeroBanner__actions .btnOutlineDark:hover {
+  background: #fff;
+  border-color: rgba(30, 45, 39, 0.28);
+}
+
+.homeHeroCta {
+  text-decoration: none;
+}
+
+.homeHeroCta__icon--cal {
+  stroke: currentColor;
+}
+
+// zdjęcie: tło jak body — żeby ewent. 1px pod zdjęciem nie dawał innego koloru niż szew z tekstem
+.homeHeroBanner__media {
+  position: relative;
+  z-index: 0;
+  min-height: 320px;
+  min-width: 0;
+  overflow: hidden;
+  // leciutkie nachodzenie na lewą kolumnę, żeby nie było widać pionowej szczeliny
+  width: calc(100% + 2px);
+  margin-left: -2px;
+  background: $bg;
+}
+
+// Gradient zaczyna się dokładnie przy szwie: szeroki, nieprzezroczysty start ($bg) przy lewej krawędzi
+.homeHeroBanner__media::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    $bg 0%,
+    $bg 2.5%,
+    sc.change($bg, $alpha: 0.5) 9%,
+    sc.change($bg, $alpha: 0) 20%
+  );
+}
+
+.homeHeroBanner__img {
+  position: absolute;
+  // minimalne „poszerzenie” w poziomie, żeby subpiksele + cover nie zostawiały pionowego paska
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: calc(100% + 2px);
+  min-width: 100%;
+  height: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transform: none;
+}
+
+// Sterowanie sliderem — „pasek” pod kartą
+.homeAboutSlider__ui {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 18px;
+  margin: 22px auto 0;
+  padding: 10px 18px;
+  max-width: max-content;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(30, 45, 39, 0.08);
+  box-shadow: 0 6px 24px rgba(30, 45, 39, 0.07);
+}
+
+.homeAboutNavBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 0;
+  background: linear-gradient(145deg, rgba(122, 163, 53, 0.12), rgba(255, 255, 255, 0.9));
+  color: $green-800;
+  box-shadow: 0 2px 8px rgba(30, 45, 39, 0.08);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, color 0.2s;
+}
+
+.homeAboutNavBtn:hover {
+  background: linear-gradient(145deg, rgba(122, 163, 53, 0.22), #fff);
+  transform: scale(1.04);
+  color: $ink;
+}
+
+.homeAboutDots {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 20px;
+  padding: 0 4px;
+}
+
+.homeAboutDots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: rgba(30, 45, 39, 0.14);
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.homeAboutDots .dot[aria-current="true"] {
+  background: $green-500;
+  box-shadow: 0 0 0 3px rgba(141, 182, 65, 0.35);
+  transform: scale(1.15);
+}
+
+.homeZnami {
+  margin: 36px 0 0;
+  text-align: center;
+  font-size: clamp(1.02rem, 0.5vw + 0.95rem, 1.15rem);
+  font-weight: 700;
+  font-style: italic;
+  color: rgba(30, 45, 39, 0.78);
+  line-height: 1.5;
+  max-width: 46ch;
+  text-wrap: balance;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 12px;
+}
+
+/* —— Strona główna: sekcja „Nasze zajęcia” —— */
+.homeOferta.section {
+  padding-top: 32px;
+}
+
+.homeOfertaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 22px);
+  align-items: stretch;
+  // +30px nad pierwszym rzędem, żeby kafle nie wisiały zaraz pod nagłówkiem
+  padding-top: 24px;
+}
+
+.homeOfertaCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: $radius-lg;
+  background: #fff;
+  border: 1px solid rgba(30, 45, 39, 0.07);
+  box-shadow: 0 2px 10px rgba(30, 45, 39, 0.05), 0 12px 36px rgba(30, 45, 39, 0.06);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  // Wariant „zwykły” — karta nie pochłania całej wysokości rzędu, dzięki czemu
+  // featured naturalnie góruje wysokością bez rozciągania pozostałych.
+  align-self: start;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  // Izolacja paint regionu — chroni resztę strony przed repaintem przy hover-ze
+  // (translateY + cień). `will-change` zdjęte razem z animacją reveal sekcji.
+  contain: layout paint;
+}
+
+.homeOfertaCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(30, 45, 39, 0.07), 0 20px 44px rgba(30, 45, 39, 0.08);
+}
+
+.homeOfertaCard:focus-visible {
+  outline: 3px solid rgba(47, 157, 92, 0.45);
+  outline-offset: 2px;
+}
+
+.homeOfertaCard__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: rgba(47, 157, 92, 0.06);
+}
+
+.homeOfertaCard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.homeOfertaCard:hover .homeOfertaCard__img {
+  transform: scale(1.04);
+}
+
+.homeOfertaCard__body {
+  padding: 14px 56px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.homeOfertaCard__title {
+  margin: 0;
+  font-size: clamp(15px, 0.3vw + 0.85rem, 17px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  color: $ink;
+}
+
+.homeOfertaCard__desc {
+  display: none;
+}
+
+.homeOfertaCard.is-featured .homeOfertaCard__desc {
+  display: block;
+  margin: 4px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.55;
+  color: $muted;
+  max-width: 38ch;
+}
+
+.homeOfertaCard__cta {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, $green-600, $green-500);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(122, 163, 53, 0.32);
+  pointer-events: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.homeOfertaCard__cta svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.homeOfertaCard:hover .homeOfertaCard__cta {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(122, 163, 53, 0.4);
+}
+
+@include down($bpMd) {
+  .homeOfertaGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@include down($bpSm) {
+  .homeOfertaGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .homeOfertaCard__body {
+    padding: 12px 52px 14px 14px;
+  }
+
+  .homeOfertaCard__cta {
+    width: 36px;
+    height: 36px;
+    right: 10px;
+    bottom: 10px;
+  }
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+// Sekcja "Rozwój przez zabawę, radość na co dzień"
+// 4 wartości skierowane na dziecko (komplementarne do "Dlaczego nas").
+// Świadomie inny styl ikon niż w "Dlaczego nas":
+//   — bez kolorowych iconBubble (kółek), duża monolitowa ikona w kolorze,
+//   — bez tła karty (czysty wiersz pod ikonami),
+// żeby na jednej stronie nie powielał się ten sam wzorzec wizualny.
+// ────────────────────────────────────────────────────────────────────────────
+
+.homeWartosci {
+  background: linear-gradient(180deg, transparent 0%, rgba(245, 240, 232, 0.45) 100%);
+}
+
+.homeWartosciGrid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(20px, 2.4vw, 40px);
+  align-items: start;
+}
+
+.homeWartosciItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 8px 4px;
+}
+
+.homeWartosciItem__icon {
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeWartosciItem__icon .iconSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.homeWartosciItem__icon--sky {
+  color: $sky-600;
+}
+.homeWartosciItem__icon--green {
+  color: $green-600;
+}
+.homeWartosciItem__icon--coral {
+  color: $coral-500;
+}
+.homeWartosciItem__icon--yellow {
+  // Czysty $yellow-500 jest za jasny na kremowym tle — przyciemniony musztardowy
+  // żeby ikona była rozpoznawalna i miała wystarczający kontrast.
+  color: #d99a1a;
+}
+
+.homeWartosciItem__title {
+  margin: 0;
+  font-size: clamp(1rem, 0.3vw + 0.95rem, 1.18rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: $ink;
+  line-height: 1.2;
+}
+
+.homeWartosciItem__desc {
+  margin: 0;
+  font-size: clamp(0.92rem, 0.2vw + 0.86rem, 1.02rem);
+  line-height: 1.5;
+  color: $muted;
+  max-width: 28ch;
+}
+
+@include down($bpMd) {
+  .homeWartosciGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+}
+
+@include down($bpSm) {
+  .homeWartosciGrid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .homeWartosciItem__icon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@include down($bpMd) {
+  .homeAboutSlider__viewport {
+    min-height: 0;
+    // Na mobile slajdy są `position: relative` (nie absolutne) — `contain: paint`
+    // zacisnęłoby wysokość, więc go zdejmujemy.
+    contain: none;
+  }
+
+  .homeAboutSlide {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    will-change: auto;
+    transform: none;
+    contain: none;
+  }
+
+  .homeAboutSlide:not(.isActive) {
+    display: none;
+  }
+
+  .homeHeroBanner__inner {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    border-radius: 0;
+  }
+
+  // Na mobile zdjęcie idzie nad tekstem (jedna kolumna) — wyrównanie do navbara
+  // desktopowego nie ma znaczenia; tekst wraca do własnego paddingu.
+  .homeHeroBanner__textCol {
+    padding-left: 0;
+  }
+
+  .homeHeroBanner__media {
+    order: -1;
+    min-height: min(48vw, 280px);
+    max-height: 42vh;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .homeHeroBanner__img {
+    width: 100%;
+  }
+
+  .homeHeroBanner__media::after {
+    background: linear-gradient(
+      180deg,
+      sc.change($bg, $alpha: 0) 0%,
+      sc.change($bg, $alpha: 0.2) 40%,
+      $bg 100%
+    );
+  }
+
+  .homeHeroBanner__text {
+    width: 100%;
+    padding: 24px 22px 28px;
+  }
+
+  .homeHeroBanner__title {
+    font-size: clamp(1.22rem, 0.9rem + 1.4vw, 1.75rem);
+    line-height: 1.12;
+  }
+
+  .homeHeroBanner__lead {
+    max-width: none;
+    font-size: 1.08rem;
+  }
+}

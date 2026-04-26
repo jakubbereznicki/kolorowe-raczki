@@ -1,0 +1,54 @@
+@use "../tokens" as *;
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 45, 39, 0.78);
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  z-index: 1000;
+}
+
+.lightboxClose {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.lightboxClose:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.lightboxImg {
+  width: min(100%, 980px);
+  max-height: min(78vh, 720px);
+  object-fit: cover;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lightboxCaption {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 800;
+  text-align: center;
+}
+

@@ -1,0 +1,16 @@
+$bpSm: 500px;
+$bpMd: 1024px;
+$bpLg: 1920px;
+
+@mixin down($w) {
+  @media (max-width: ($w - 1px)) {
+    @content;
+  }
+}
+
+@mixin up($w) {
+  @media (min-width: $w) {
+    @content;
+  }
+}
+

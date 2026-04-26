@@ -1,0 +1,31 @@
+# Zależności
+node_modules/
+
+# Logi
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Zmienne środowiskowe (gdy kiedyś dodasz)
+.env
+.env.local
+.env.*.local
+
+# Systemy plików
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Cache / tymczasowe
+.sass-cache/
+*.tmp
+*.temp
+
+# Ewentualne katalogi builda (gdy dojdą)
+dist/
+build/
+.cache/
+
+# Odkomentuj, jeśli NIE chcesz wrzucać lokalnej paczki treści do repo:
+# Kolorowe centrum - strona internetowa/

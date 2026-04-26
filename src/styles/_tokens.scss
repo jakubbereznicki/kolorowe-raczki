@@ -1,0 +1,64 @@
+$font-sans: "Nunito", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans",
+  "Apple Color Emoji", "Segoe UI Emoji";
+
+// Mock palette: zieleń, koral, błękit, żółć, tło kremowe
+// Zieleń z projektu (ok. #8DB641) + tonacja
+$green-800: #2a4518;
+$green-700: #5a7f2e;
+$green-600: #7aa335;
+$green-500: #8db641;
+$green-100: #e8f0d8;
+$green-50: #f3f6eb;
+
+$coral-700: #c73d4a;
+$coral-500: #e85d4d;
+$coral-100: #ffe8e5;
+
+$sky-700: #1e6a9e;
+$sky-600: #2a8cc8;
+$sky-500: #3aa3d9;
+$sky-100: #e0f2fb;
+
+$yellow-500: #f0c14b;
+$yellow-100: #fff6dd;
+
+$cream: #fffaf3;
+$cream-dark: #f5f0e8;
+
+$ink: #1e2d27;
+$muted: rgba(30, 45, 39, 0.72);
+$bg: $cream;
+$card: #ffffff;
+
+// Zgodność wsteczna: stary "niebieski" brand = zieleń w akcjach
+$blue-900: $ink;
+$blue-800: $green-800;
+$blue-700: $green-700;
+$blue-600: $green-600;
+$blue-500: $green-500;
+$blue-200: $green-100;
+$blue-100: $green-50;
+
+$accent-yellow: $yellow-500;
+$accent-mint: $green-500;
+$accent-coral: $coral-500;
+
+$shadow-sm: 0 8px 24px rgba(30, 45, 39, 0.08);
+$shadow-md: 0 20px 48px rgba(30, 45, 39, 0.12);
+
+$radius-sm: 14px;
+$radius-md: 20px;
+$radius-lg: 28px;
+$radius-xl: 36px;
+
+$space-1: 6px;
+$space-2: 10px;
+$space-3: 14px;
+$space-4: 18px;
+$space-5: 24px;
+$space-6: 32px;
+$space-7: 44px;
+$space-8: 64px;
+
+$container: 1600px;
+$containerHomeAbout: 2560px; // pierwsza sekcja (baner) — szersza niż reszta strony

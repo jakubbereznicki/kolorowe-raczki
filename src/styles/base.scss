@@ -1,0 +1,85 @@
+@use "./tokens" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: $font-sans;
+  font-weight: 600;
+  color: $ink;
+  background-color: $bg;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 0;
+}
+
+// Jedna warstwa plam na całą stronę (viewport), bez przycinania na granicach sekcji
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 1000px 720px at 4% 6%, rgba(47, 157, 92, 0.12), transparent 60%),
+    radial-gradient(ellipse 880px 640px at 98% 8%, rgba(240, 193, 75, 0.11), transparent 58%),
+    radial-gradient(ellipse 900px 700px at 3% 38%, rgba(58, 163, 217, 0.1), transparent 58%),
+    radial-gradient(ellipse 800px 600px at 97% 32%, rgba(47, 157, 92, 0.08), transparent 56%),
+    radial-gradient(ellipse 750px 580px at 6% 58%, rgba(240, 193, 75, 0.09), transparent 58%),
+    radial-gradient(ellipse 820px 640px at 95% 52%, rgba(232, 93, 77, 0.07), transparent 58%),
+    radial-gradient(ellipse 880px 700px at 5% 85%, rgba(47, 157, 92, 0.1), transparent 60%),
+    radial-gradient(ellipse 760px 600px at 88% 78%, rgba(58, 163, 217, 0.09), transparent 58%),
+    radial-gradient(ellipse 800px 680px at 50% 98%, rgba(240, 193, 75, 0.08), transparent 58%);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.container {
+  width: min(100% - 32px, $container);
+  margin-inline: auto;
+}
+
+.skipLink {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: $card;
+  box-shadow: $shadow-sm;
+  transform: translateY(-200%);
+  transition: transform 180ms ease;
+  z-index: 9999;
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
+.siteMain {
+  flex: 1;
+}
+

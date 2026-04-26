@@ -1,0 +1,77 @@
+@use "sass:color" as sc;
+@use "../tokens" as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 800;
+  padding: 12px 16px;
+  border-radius: $radius-md;
+  border: 1px solid rgba(47, 157, 92, 0.22);
+  background: rgba(255, 255, 255, 0.92);
+  color: $ink;
+  box-shadow: $shadow-sm;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
+  will-change: transform;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: $shadow-md;
+  border-color: rgba(47, 157, 92, 0.35);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: $shadow-sm;
+}
+
+.btn:focus-visible {
+  outline: 3px solid rgba(47, 157, 92, 0.45);
+  outline-offset: 3px;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, $green-600, $green-500);
+  border-color: transparent;
+  color: #fff;
+}
+
+.btnPrimary:hover {
+  background: linear-gradient(135deg, sc.adjust($green-600, $lightness: 2%), sc.adjust($green-500, $lightness: 2%));
+}
+
+.pill {
+  display: inline-flex;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(141, 182, 65, 0.15);
+  border: 1px solid rgba(141, 182, 65, 0.3);
+  color: $green-800;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+// Przycisk z maku: biały, cienka obwódka, ciemna typografia
+.btnOutlineDark {
+  background: #fff;
+  border: 1.5px solid rgba(30, 45, 39, 0.28);
+  color: $ink;
+  box-shadow: none;
+}
+
+.btnOutlineDark:hover {
+  transform: translateY(-1px);
+  border-color: rgba(30, 45, 39, 0.45);
+  background: $cream;
+  box-shadow: 0 4px 16px rgba(30, 45, 39, 0.08);
+}
+
+.btnOutlineDark:focus-visible {
+  outline: 3px solid rgba(30, 45, 39, 0.25);
+  outline-offset: 3px;
+}
+
