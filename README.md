@@ -1,5 +1,7 @@
 ## Kolorowe Centrum — wizytówka
 
+DEMO: https://jakubbereznicki.github.io/kolorowe-raczki/
+
 Prosta strona-wizytówka szkoły dla dzieci (0–12 lat) z:
 - home page z sekcjami (slider, galeria, kalendarz, o nas, kontakt),
 - nawigacją z dropdownami,
