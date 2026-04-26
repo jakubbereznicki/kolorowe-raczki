@@ -7,7 +7,7 @@
       (function () {
         var h = document.head;
         var prefix = '';
-        if (location.hostname.length >= 10 && location.hostname.slice(-10) === 'github.io') {
+        if (location.hostname === 'github.io' || location.hostname.slice(-10) === '.github.io') {
           var segs = location.pathname.split('/').filter(Boolean);
           if (segs.length) prefix = '/' + segs[0];
         }

@@ -9,21 +9,32 @@ function stripTrailingSlash(path) {
   return path.endsWith('/') ? path.slice(0, -1) : path;
 }
 
+function isGitHubPagesHost() {
+  const h = (typeof location !== 'undefined' && location.hostname) || '';
+  return h === 'github.io' || (h.length >= 10 && h.slice(-10) === '.github.io');
+}
+
 /**
  * Segment ścieżki aplikacji bez końcowego slasha, np. "" lub "/kolorowe-raczki".
  * Pusty string = serwis na root (localhost, własna domena na root).
  */
 export function getBasePath() {
   const el = document.getElementById('app-base');
-  if (!el) return '';
-  const raw = el.getAttribute('href') || '/';
-  try {
-    const u = new URL(raw, window.location.origin);
-    const p = stripTrailingSlash(u.pathname);
-    return p === '/' ? '' : p;
-  } catch {
-    return '';
+  if (el) {
+    const raw = el.getAttribute('href') || '/';
+    try {
+      const u = new URL(raw, window.location.origin);
+      const p = stripTrailingSlash(u.pathname);
+      return p === '/' ? '' : p;
+    } catch {
+      // ignorujemy — fallback poniżej
+    }
   }
+  if (isGitHubPagesHost()) {
+    const segs = window.location.pathname.split('/').filter(Boolean);
+    if (segs.length) return '/' + segs[0];
+  }
+  return '';
 }
 
 export function normalizePath(pathname) {
