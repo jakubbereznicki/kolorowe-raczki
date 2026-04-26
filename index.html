@@ -3,17 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <base id="app-base" href="/" />
     <script>
       (function () {
-        var el = document.getElementById('app-base');
-        if (!el) return;
-        var base = '/';
-        if (location.hostname.slice(-10) === 'github.io') {
-          var parts = location.pathname.split('/').filter(Boolean);
-          if (parts.length) base = '/' + parts[0] + '/';
+        var h = document.head;
+        var prefix = '';
+        if (location.hostname.length >= 10 && location.hostname.slice(-10) === 'github.io') {
+          var segs = location.pathname.split('/').filter(Boolean);
+          if (segs.length) prefix = '/' + segs[0];
         }
-        el.setAttribute('href', base);
+        var b = document.createElement('base');
+        b.id = 'app-base';
+        b.href = prefix ? prefix + '/' : '/';
+        h.appendChild(b);
+        var cssHref = prefix ? prefix + '/assets/styles.css' : 'assets/styles.css';
+        var css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = cssHref;
+        h.appendChild(css);
+        var iconHref = prefix ? prefix + '/assets/favicon.svg' : 'assets/favicon.svg';
+        var ico = document.createElement('link');
+        ico.rel = 'icon';
+        ico.type = 'image/svg+xml';
+        ico.href = iconHref;
+        h.appendChild(ico);
       })();
     </script>
     <title>Kolorowe Centrum — zajęcia dla dzieci 0–12</title>
@@ -21,14 +33,12 @@
       name="description"
       content="Kolorowe Centrum — zajęcia dodatkowe i rozwój przez zabawę dla dzieci 0–12 lat. Galeria, kalendarz, kontakt."
     />
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Quicksand:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
     <a class="skipLink" href="#main">Przejdź do treści</a>
