@@ -43,7 +43,7 @@ export function renderZapisy() {
             <li><span class="check"></span>Można umówić zajęcia próbne</li>
           </ul>
           <div style="margin-top:14px">
-            <a class="btn" href="/#kalendarz" data-link>Zobacz kalendarz</a>
+            <a class="btn" href="#kalendarz" data-link>Zobacz kalendarz</a>
           </div>
         </div>
       </div>

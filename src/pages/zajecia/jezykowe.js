@@ -20,8 +20,8 @@ export function renderZajeciaJezykowe() {
             Dla dzieci 4–10 lat. Dzielimy na grupy wiekowe i poziomowe, żeby każdy czuł się swobodnie.
           </p>
           <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn btnPrimary" href="/zapisy" data-link>Zapisz dziecko</a>
-            <a class="btn" href="/#kontakt" data-link>Zapytaj o grupę</a>
+            <a class="btn btnPrimary" href="zapisy" data-link>Zapisz dziecko</a>
+            <a class="btn" href="#kontakt" data-link>Zapytaj o grupę</a>
           </div>
         </div>
       </div>

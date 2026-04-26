@@ -21,12 +21,12 @@ export function renderOferta() {
           <h3 style="margin:0 0 6px;letter-spacing:-.02em">Szybkie linki</h3>
           <p class="muted" style="margin:0 0 14px">Zobacz przykładowe ścieżki zajęć:</p>
           <div style="display:flex;flex-wrap:wrap;gap:10px">
-            <a class="btn" href="/zajecia/plastyczne" data-link>Plastyczne</a>
-            <a class="btn" href="/zajecia/ruchowe" data-link>Ruchowe</a>
-            <a class="btn" href="/zajecia/jezykowe" data-link>Językowe</a>
+            <a class="btn" href="zajecia/plastyczne" data-link>Plastyczne</a>
+            <a class="btn" href="zajecia/ruchowe" data-link>Ruchowe</a>
+            <a class="btn" href="zajecia/jezykowe" data-link>Językowe</a>
           </div>
           <div style="margin-top:14px">
-            <a class="btn btnPrimary" href="/zapisy" data-link>Zapisz dziecko</a>
+            <a class="btn btnPrimary" href="zapisy" data-link>Zapisz dziecko</a>
           </div>
         </div>
       </div>

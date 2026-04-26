@@ -1,11 +1,12 @@
 import { elFromHTML } from './_helpers.js';
+import { resolveAppUrl } from '../js/basePath.js';
 import { escapeHtml } from './pdfTextHtml.js';
 import { buildHomeRichPdfHtml } from './homeRichPdf.js';
 
 function figureRow(url) {
   return `
     <figure class="topicFigure" data-reveal>
-      <img class="topicFigure__img" src="${escapeHtml(url)}" alt="" loading="lazy" width="1200" height="800" />
+      <img class="topicFigure__img" src="${escapeHtml(resolveAppUrl(url))}" alt="" loading="lazy" width="1200" height="800" />
     </figure>`;
 }
 
@@ -34,18 +35,18 @@ export function renderTopicSubpage(topic) {
 
   const hero = imgs[0]?.url;
   const galleryRest = imgs.length > 1 ? imgs.slice(1) : [];
-  const linkSub = `/${escapeHtml(topic.slug)}`;
+  const linkSub = escapeHtml(topic.slug);
 
   const pdfBlocks = pdfs
     .map(
       (p) => `
     <div class="topicSubpagePdf" data-reveal>
       ${buildHomeRichPdfHtml({
-        heroImageUrl: hero,
+        heroImageUrl: resolveAppUrl(hero),
         topicLabel: topic.label,
         linkSub,
         pdfName: p.name,
-        pdfUrl: p.url,
+        pdfUrl: resolveAppUrl(p.url),
         hasSub: true,
         text: p.text || '',
         isSubpage: true,

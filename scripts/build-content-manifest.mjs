@@ -1,5 +1,5 @@
 /**
- * Skanuje `Kolorowe centrum - strona internetowa/<temat>/{strona główna|podstrona}/`
+ * Skanuje `content-site/<temat>/{strona główna|podstrona}/`
  * i zapisuje manifest do assets/content-manifest.json
  */
 import { readdir, readFile, stat, writeFile, mkdir } from 'node:fs/promises';
@@ -7,7 +7,7 @@ import { join, normalize } from 'node:path';
 import { PDFParse } from 'pdf-parse';
 
 const ROOT = process.cwd();
-const CONTENT_DIR = join(ROOT, 'Kolorowe centrum - strona internetowa');
+const CONTENT_DIR = join(ROOT, 'content-site');
 const OUT = join(ROOT, 'assets', 'content-manifest.json');
 
 const HOME_NAME = 'strona główna';

@@ -27,5 +27,5 @@ dist/
 build/
 .cache/
 
-# Odkomentuj, jeśli NIE chcesz wrzucać lokalnej paczki treści do repo:
-# Kolorowe centrum - strona internetowa/
+# Odkomentuj, jeśli NIE chcesz wrzucać katalogu treści (duże pliki) do repo:
+# content-site/

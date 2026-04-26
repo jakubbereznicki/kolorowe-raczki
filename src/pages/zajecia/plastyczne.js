@@ -20,8 +20,8 @@ export function renderZajeciaPlastyczne() {
             Malowanie, kolaże, podstawy kompozycji, prace przestrzenne. Każdy uczestnik wychodzi z własną pracą.
           </p>
           <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn btnPrimary" href="/zapisy" data-link>Zapisz dziecko</a>
-            <a class="btn" href="/#galeria" data-link>Zobacz galerię</a>
+            <a class="btn btnPrimary" href="zapisy" data-link>Zapisz dziecko</a>
+            <a class="btn" href="#galeria" data-link>Zobacz galerię</a>
           </div>
         </div>
       </div>

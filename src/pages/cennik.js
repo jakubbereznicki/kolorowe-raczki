@@ -32,8 +32,8 @@ export function renderCennik() {
             <li><span class="check"></span>Kontakt z prowadzącym i feedback</li>
           </ul>
           <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn btnPrimary" href="/zapisy" data-link>Zapisz dziecko</a>
-            <a class="btn" href="/#kontakt" data-link>Napisz do nas</a>
+            <a class="btn btnPrimary" href="zapisy" data-link>Zapisz dziecko</a>
+            <a class="btn" href="#kontakt" data-link>Napisz do nas</a>
           </div>
         </div>
       </div>

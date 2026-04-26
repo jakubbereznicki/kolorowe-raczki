@@ -1,4 +1,18 @@
+import { getAppPathname, getBasePath, normalizePath } from './basePath.js';
 import { loadContentManifest } from './content/manifest.js';
+
+/** Ten sam rachunek co getAppPathname, ale z dowolnego href (względny do <base>). */
+function hrefToAppPath(href) {
+  try {
+    const u = new URL(href, document.baseURI);
+    let p = normalizePath(u.pathname);
+    const base = getBasePath();
+    if (base && p.startsWith(base)) p = p.slice(base.length) || '/';
+    return normalizePath(p);
+  } catch {
+    return null;
+  }
+}
 import { renderHome } from '../pages/home.js';
 import { renderRezerwacje } from '../pages/rezerwacje.js';
 import { renderTopicSubpage } from '../pages/topicSubpage.js';
@@ -25,21 +39,23 @@ function buildRoutes(manifest) {
   return out;
 }
 
-function normalizePath(pathname) {
-  if (!pathname) return '/';
-  if (pathname.length > 1 && pathname.endsWith('/')) return pathname.slice(0, -1);
-  return pathname;
-}
-
 function setActiveLinks(pathname) {
   document.querySelectorAll('a[data-link]').forEach((a) => {
     const href = a.getAttribute('href') || '';
-    if (!href.startsWith('/')) {
+    if (!href || href.startsWith('http://') || href.startsWith('https://')) {
       a.removeAttribute('aria-current');
       return;
     }
-    const linkPath = normalizePath(href.split('#')[0]);
-    if (linkPath === pathname && !href.includes('#')) a.setAttribute('aria-current', 'page');
+    if (href.includes('#')) {
+      a.removeAttribute('aria-current');
+      return;
+    }
+    const linkPath = hrefToAppPath(href);
+    if (linkPath == null) {
+      a.removeAttribute('aria-current');
+      return;
+    }
+    if (linkPath === pathname) a.setAttribute('aria-current', 'page');
     else a.removeAttribute('aria-current');
   });
 }
@@ -55,7 +71,7 @@ async function renderCurrent() {
   const app = document.getElementById('app');
   if (!app) return;
 
-  const pathname = normalizePath(window.location.pathname);
+  const pathname = getAppPathname();
   const hash = window.location.hash;
 
   const route = routes.find((r) => r.path === pathname) || routes[0];
@@ -82,7 +98,7 @@ async function renderCurrent() {
 }
 
 function navigate(to) {
-  const url = new URL(to, window.location.origin);
+  const url = new URL(to, document.baseURI);
   window.history.pushState({}, '', url.pathname + url.search + url.hash);
   void renderCurrent();
 }

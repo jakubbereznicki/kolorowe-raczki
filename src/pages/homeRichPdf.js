@@ -1,6 +1,5 @@
+import { resolveAppUrl } from '../js/basePath.js';
 import { escapeHtml } from './pdfTextHtml.js';
-
-const IMG_FALLBACK = '/assets/hero-kids.jpg';
 
 /** @type {Record<string, string>} */
 const ICONS = {
@@ -157,7 +156,7 @@ function pHtml(s) {
  */
 export function buildHomeRichPdfHtml(p) {
   const { heroImageUrl, topicLabel, linkSub, pdfName, pdfUrl, hasSub, text, isSubpage } = p;
-  const img = escapeHtml(heroImageUrl || IMG_FALLBACK);
+  const img = escapeHtml(heroImageUrl || resolveAppUrl('/assets/hero-kids.jpg'));
   const showSubLink = hasSub && !isSubpage;
   const structured = parseStructured(text);
   if (structured) {

@@ -19,7 +19,7 @@ export function buildNavFromManifest(manifest) {
 
   const liHome = document.createElement('li');
   liHome.className = 'navItem';
-  liHome.innerHTML = '<a class="navLink" href="/" data-link>Strona główna</a>';
+  liHome.innerHTML = '<a class="navLink" href="." data-link>Strona główna</a>';
   list.appendChild(liHome);
 
   if (topics.length) {
@@ -35,7 +35,7 @@ export function buildNavFromManifest(manifest) {
         ${topics
           .map(
             (t) =>
-              `<li><a class="dropdownLink" href="/${esc(t.slug)}" data-link>${esc(
+              `<li><a class="dropdownLink" href="${esc(t.slug)}" data-link>${esc(
                 t.label,
               )}</a></li>`,
           )
@@ -47,6 +47,6 @@ export function buildNavFromManifest(manifest) {
 
   const liR = document.createElement('li');
   liR.className = 'navItem';
-  liR.innerHTML = '<a class="navLink" href="/rezerwacje" data-link>Rezerwacje</a>';
+  liR.innerHTML = '<a class="navLink" href="rezerwacje" data-link>Rezerwacje</a>';
   list.appendChild(liR);
 }

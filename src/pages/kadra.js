@@ -18,7 +18,7 @@ export function renderKadra() {
         </div>
       </div>
       <div style="margin-top:16px" data-reveal="down">
-        <a class="btn btnPrimary" href="/zapisy" data-link>Zapisz dziecko</a>
+        <a class="btn btnPrimary" href="zapisy" data-link>Zapisz dziecko</a>
       </div>
     `,
   });

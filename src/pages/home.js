@@ -2,9 +2,9 @@ import { elFromHTML } from './_helpers.js';
 
 /** Zdjęcia z katalogu treści (tymczasowe — do wymiany) */
 const SLIDE_IMAGES = [
-  '/content-site/Zaj%C4%99cia%20cykliczne%20w%20plac%C3%B3wkach/podstrona/FB_IMG_1742389521939.jpg',
-  '/content-site/Pakiety%20urodzinowe/podstrona/DSC00010.JPG',
-  '/content-site/Dzienny%20opiekun/podstrona/IMG_20251118_085211.jpg',
+  'content-site/Zaj%C4%99cia%20cykliczne%20w%20plac%C3%B3wkach/podstrona/FB_IMG_1742389521939.jpg',
+  'content-site/Pakiety%20urodzinowe/podstrona/DSC00010.JPG',
+  'content-site/Dzienny%20opiekun/podstrona/IMG_20251118_085211.jpg',
 ];
 
 const SLIDE_TEXTS = [
@@ -60,7 +60,7 @@ const OFFERS = [
   {
     slug: 'warsztaty-okazjonalne',
     label: 'Warsztaty okazjonalne',
-    image: '/content-site/Warsztaty%20okazjonalne/podstrona/1776859333132.JPG',
+    image: 'content-site/Warsztaty%20okazjonalne/podstrona/1776859333132.JPG',
     description:
       'Kreatywne i sensoryczne warsztaty tematyczne — pachnące mydełka glicerynowe, malowana ceramika, mandale na kamieniach i sezonowe ozdoby świąteczne. Mamy też spotkania na Dzień Mamy, Babci czy 11 listopada.',
     featured: true,
@@ -68,17 +68,17 @@ const OFFERS = [
   {
     slug: 'warsztaty-w-kolorowych-raczkach',
     label: 'Warsztaty w Kolorowych Rączkach',
-    image: '/content-site/Warsztaty%20w%20kolorowych%20r%C4%85czkach/podstrona/IMG-20251025-WA0017.jpg',
+    image: 'content-site/Warsztaty%20w%20kolorowych%20r%C4%85czkach/podstrona/IMG-20251025-WA0017.jpg',
   },
   {
     slug: 'zajecia-cykliczne-w-placowkach',
     label: 'Zajęcia cykliczne w placówkach',
-    image: '/content-site/Zaj%C4%99cia%20cykliczne%20w%20plac%C3%B3wkach/podstrona/sensoplastyka(5).jpg',
+    image: 'content-site/Zaj%C4%99cia%20cykliczne%20w%20plac%C3%B3wkach/podstrona/sensoplastyka(5).jpg',
   },
   {
     slug: 'pakiety-urodzinowe',
     label: 'Pakiety urodzinowe',
-    image: '/content-site/Pakiety%20urodzinowe/podstrona/DSC05927.JPG',
+    image: 'content-site/Pakiety%20urodzinowe/podstrona/DSC05927.JPG',
     description:
       'Tematyczne urodziny dopasowane do wieku jubilata — sensoplastyka i muzyka dla maluchów, magic masa, eksperymenty, mali piraci czy superbohaterowie dla starszaków. Ponad 10 motywów do wyboru, animator, tańce i foto strefa w pakiecie.',
     featured: true,
@@ -86,12 +86,12 @@ const OFFERS = [
   {
     slug: 'dzienny-opiekun',
     label: 'Dzienny opiekun',
-    image: '/content-site/Dzienny%20opiekun/podstrona/IMG_20251014_132654.jpg',
+    image: 'content-site/Dzienny%20opiekun/podstrona/IMG_20251014_132654.jpg',
   },
   {
     slug: 'polkolonie',
     label: 'Półkolonie',
-    image: '/content-site/P%C3%B3%C5%82kolonie/podstrona/1776858150808.jpg',
+    image: 'content-site/P%C3%B3%C5%82kolonie/podstrona/1776858150808.jpg',
   },
 ];
 
@@ -103,7 +103,7 @@ function renderOfferCard(offer) {
       : '';
   const featuredClass = isFeatured ? ' is-featured' : '';
   return `
-    <a class="homeOfertaCard${featuredClass}" href="/${offer.slug}" data-link data-reveal aria-label="${offer.label}">
+    <a class="homeOfertaCard${featuredClass}" href="${offer.slug}" data-link data-reveal aria-label="${offer.label}">
       <div class="homeOfertaCard__media">
         <img
           class="homeOfertaCard__img"
@@ -211,11 +211,11 @@ export async function renderHome() {
               ${heroMainTitle(i === 0)}
               <p class="homeHeroBanner__lead">${copy}</p>
               <div class="homeHeroBanner__actions">
-                <a class="btn btnPrimary homeHeroCta" href="/#dlaczego-tytul" data-link>
+                <a class="btn btnPrimary homeHeroCta" href="#dlaczego-tytul" data-link>
                   <span>Zobacz zajęcia</span>
                   ${iconArrow()}
                 </a>
-                <a class="btn btnOutlineDark homeHeroCta" href="/rezerwacje" data-link>
+                <a class="btn btnOutlineDark homeHeroCta" href="rezerwacje" data-link>
                   ${iconCalendar()}<span>Zarezerwuj miejsce</span>
                 </a>
               </div>
@@ -278,7 +278,7 @@ export async function renderHome() {
               <div class="homeDlaczegoLogo">
                 <img
                   class="homeDlaczegoLogo__img"
-                  src="/assets/logo-kolorowe-raczki.png"
+                  src="assets/logo-kolorowe-raczki.png"
                   width="250"
                   height="250"
                   alt="Kolorowe Rączki"

@@ -3,7 +3,7 @@ import { readFile, stat } from 'node:fs/promises';
 import { createReadStream } from 'node:fs';
 import { extname, join, normalize } from 'node:path';
 
-const CONTENT_DIR_NAME = 'Kolorowe centrum - strona internetowa';
+const CONTENT_DIR_NAME = 'content-site';
 const CONTENT_PREFIX = '/content-site/';
 
 const PORT = process.env.PORT ? Number(process.env.PORT) : 5173;
@@ -43,7 +43,7 @@ async function fileExists(path) {
   }
 }
 
-/** Map `/content-site/...` to files under `Kolorowe centrum - strona internetowa/`. */
+/** Map `/content-site/...` to files under `content-site/`. */
 function safeContentSitePath(urlPath) {
   if (!urlPath || !urlPath.startsWith(CONTENT_PREFIX)) return null;
   const rest = urlPath.slice(CONTENT_PREFIX.length).split('?')[0];
