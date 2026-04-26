@@ -1374,8 +1374,26 @@ button {
 
 .footerLegal {
   display: flex;
-  gap: 16px;
+  gap: 4px;
   flex-wrap: wrap;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(30, 45, 39, 0.72);
+}
+
+.footerCraftedLink {
+  color: rgba(30, 45, 39, 0.72);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 140ms ease;
+}
+
+.footerCraftedLink:hover {
+  border-bottom-color: currentColor;
+}
+
+.footerCraftedLink strong {
+  font-weight: 900;
 }
 
 .footerTitle {
