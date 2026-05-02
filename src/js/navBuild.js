@@ -45,6 +45,11 @@ export function buildNavFromManifest(manifest) {
     list.appendChild(li);
   }
 
+  const liG = document.createElement('li');
+  liG.className = 'navItem';
+  liG.innerHTML = '<a class="navLink" href="galeria" data-link>Galeria</a>';
+  list.appendChild(liG);
+
   const liR = document.createElement('li');
   liR.className = 'navItem';
   liR.innerHTML = '<a class="navLink" href="rezerwacje" data-link>Rezerwacje</a>';

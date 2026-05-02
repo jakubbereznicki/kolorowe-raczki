@@ -16,9 +16,12 @@ function hrefToAppPath(href) {
 import { renderHome } from '../pages/home.js';
 import { renderRezerwacje } from '../pages/rezerwacje.js';
 import { renderTopicSubpage } from '../pages/topicSubpage.js';
+import { renderGaleria } from '../pages/galeria.js';
+import { renderPolitykaPrywatnosci } from '../pages/politykaPrywatnosci.js';
 import { refreshRevealOnScroll } from './revealOnScroll.js';
 import { initCalendar } from './calendar.js';
 import { initSlider } from './slider.js';
+import { initLazyImages } from './lazyImages.js';
 
 let routes = [];
 
@@ -27,6 +30,8 @@ function buildRoutes(manifest) {
   const out = [
     { path: '/', title: 'Kolorowe Centrum — strona główna', render: () => renderHome() },
     { path: '/rezerwacje', title: 'Rezerwacje — Kolorowe Centrum', render: () => renderRezerwacje() },
+    { path: '/galeria', title: 'Galeria — Kolorowe Centrum', render: () => renderGaleria() },
+    { path: '/polityka-prywatnosci', title: 'Polityka Prywatności — Kolorowe Centrum', render: () => renderPolitykaPrywatnosci() },
   ];
   for (const t of m) {
     if (!t.hasSub) continue;
@@ -93,6 +98,7 @@ async function renderCurrent() {
   initCalendar(app);
   initSlider(app);
   refreshRevealOnScroll(app);
+  initLazyImages(app);
 
   requestAnimationFrame(() => scrollToHash(hash));
 }

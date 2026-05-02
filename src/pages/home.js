@@ -1,5 +1,30 @@
 import { elFromHTML } from './_helpers.js';
 
+/** Miniaturki do sekcji "Galeria" na stronie głównej */
+const GALLERY_THUMBNAILS = [
+  {
+    src: 'content-site/zajecia-cykliczne-w-placowkach/podstrona/sensoplastyka(5).jpg',
+    caption: 'Zajęcia sensoryczne',
+    featured: true,
+  },
+  {
+    src: 'content-site/warsztaty-okazjonalne/podstrona/1776859333132.JPG',
+    caption: 'Warsztaty okazjonalne',
+  },
+  {
+    src: 'content-site/pakiety-urodzinowe/podstrona/DSC00010.JPG',
+    caption: 'Urodziny',
+  },
+  {
+    src: 'content-site/warsztaty-w-kolorowych-raczkach/podstrona/IMG-20251025-WA0017.jpg',
+    caption: 'Warsztaty',
+  },
+  {
+    src: 'content-site/polkolonie/podstrona/1776858150808.jpg',
+    caption: 'Półkolonie',
+  },
+];
+
 /** Zdjęcia z katalogu treści (tymczasowe — do wymiany) */
 const SLIDE_IMAGES = [
   'content-site/zajecia-cykliczne-w-placowkach/podstrona/FB_IMG_1742389521939.jpg',
@@ -250,6 +275,36 @@ export async function renderHome() {
   const offersHtml = OFFERS.map(renderOfferCard).join('');
   const valuesHtml = VALUES.map(renderValueItem).join('');
 
+  const KONTAKT_CHECKS = [
+    'Prosta i szybka rezerwacja online',
+    'Różnorodne zajęcia dopasowane do wieku',
+    'Doświadczeni instruktorzy i opiekunowie',
+    'Przyjazna atmosfera i świetna zabawa',
+  ];
+  const kontaktChecksHtml = KONTAKT_CHECKS.map(
+    (item) => `
+    <li class="homeKontaktCheckItem">
+      <span class="homeKontaktCheck" aria-hidden="true"></span>
+      ${item}
+    </li>`,
+  ).join('');
+
+  const galleryThumbsHtml = GALLERY_THUMBNAILS.map((t) => {
+    const featuredClass = t.featured ? ' homeGaleriaMosaic__item--featured' : '';
+    return `
+      <button
+        class="homeGaleriaMosaic__item${featuredClass}"
+        type="button"
+        data-gallery-item
+        data-src="${t.src}"
+        data-alt="${t.caption}"
+        data-caption="${t.caption}"
+        aria-label="Powiększ: ${t.caption}"
+      >
+        <img src="${t.src}" alt="" loading="lazy" decoding="async" width="800" height="600" />
+      </button>`;
+  }).join('');
+
   const root = elFromHTML(`
     <div>
       <section class="section homeAbout" id="o-nas" aria-label="O nas">
@@ -325,6 +380,151 @@ export async function renderHome() {
           </ul>
         </div>
       </section>
+
+      <section class="section homeGaleria" id="galeria-preview" aria-labelledby="galeria-preview-tytul">
+        <div class="container">
+          <div class="homeGaleriaInner">
+            <div class="homeGaleriaText" data-reveal="left">
+              <h2 class="sectionTitle" id="galeria-preview-tytul">Galeria</h2>
+              <p class="homeGaleriaLead">Zobacz, jak dobrze się bawimy!</p>
+              <a class="btn btnPrimary homeGaleriaCta" href="galeria" data-link>
+                Zobacz więcej zdjęć
+                ${iconArrow()}
+              </a>
+            </div>
+            <div class="homeGaleriaMosaic" data-reveal>
+              ${galleryThumbsHtml}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rezerwacje + Kontakt — wspólne tło zdjęciowe -->
+      <div class="homeRKWrapper">
+        <img
+          class="homeRKWrapper__bg"
+          src="content-site/warsztaty-w-kolorowych-raczkach/podstrona/IMG-20251025-WA0070.jpg"
+          alt=""
+          loading="lazy"
+          decoding="async"
+          aria-hidden="true"
+          width="1600"
+          height="900"
+        />
+        <div class="homeRKWrapper__overlay" aria-hidden="true"></div>
+
+        <section class="section homeRezerwacje" id="rezerwacje" aria-labelledby="rezerwacje-tytul">
+          <div class="container">
+            <div class="sectionHeader sectionHeader--center" data-reveal>
+              <h2 class="sectionTitle" id="rezerwacje-tytul">Rezerwacje</h2>
+              <p class="sectionLead">Wybierz dogodny termin i zarezerwuj miejsce online.</p>
+            </div>
+            <div class="homeRezerwacjeEmbed" data-reveal>
+              <div class="homeRezerwacjeEmbed__placeholder">
+                ${iconCalendar()}
+                <p>Miejsce na iframe Calendesk</p>
+              </div>
+              <!--
+                Docelowo wstaw tutaj:
+                <iframe
+                  class="homeRezerwacjeEmbed__iframe"
+                  src="https://twoj-link-calendesk"
+                  title="Kalendarz rezerwacji"
+                  loading="lazy"
+                ></iframe>
+              -->
+            </div>
+          </div>
+        </section>
+
+        <section class="section homeKontakt" id="kontakt" aria-labelledby="kontakt-tytul">
+          <div class="container">
+            <div class="homeKontaktInner">
+              <div class="homeKontaktText" data-reveal="left">
+                <h2 class="homeKontaktTitle" id="kontakt-tytul">
+                  Zapisz swoje dziecko<br />na zajęcia <span>już dziś!</span>
+                </h2>
+                <ul class="homeKontaktCheckList">
+                  ${kontaktChecksHtml}
+                </ul>
+              </div>
+              <div class="homeKontaktFormWrap" data-reveal="right">
+                <form class="homeKontaktForm" data-contact-form novalidate>
+                  <div class="homeKontaktFormGrid">
+                    <div class="homeKontaktField">
+                      <label for="kontakt-imie">Imię i nazwisko</label>
+                      <input
+                        type="text"
+                        id="kontakt-imie"
+                        name="name"
+                        placeholder="Jan Kowalski"
+                        autocomplete="name"
+                      />
+                    </div>
+                    <div class="homeKontaktField">
+                      <label for="kontakt-email">E-mail</label>
+                      <input
+                        type="email"
+                        id="kontakt-email"
+                        name="email"
+                        placeholder="jan@example.pl"
+                        autocomplete="email"
+                      />
+                    </div>
+                    <div class="homeKontaktField">
+                      <label for="kontakt-tel">Telefon</label>
+                      <input
+                        type="tel"
+                        id="kontakt-tel"
+                        name="phone"
+                        placeholder="+48 000 000 000"
+                        autocomplete="tel"
+                      />
+                    </div>
+                    <div class="homeKontaktField homeKontaktField--full">
+                      <label for="kontakt-msg">Wiadomość</label>
+                      <textarea
+                        id="kontakt-msg"
+                        name="message"
+                        placeholder="Napisz o swoim dziecku i interesujących je zajęciach…"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <label class="homeKontaktConsent">
+                    <input
+                      type="checkbox"
+                      name="consent"
+                      class="homeKontaktConsent__input"
+                      required
+                    />
+                    <span class="homeKontaktConsent__text">
+                      Wyrażam zgodę na przetwarzanie moich danych osobowych przez Kolorowe Centrum zgodnie z
+                      <a class="homeKontaktConsent__link" href="polityka-prywatnosci" data-link>Polityką Prywatności</a>
+                      w celu odpowiedzi na wiadomość.
+                    </span>
+                  </label>
+                  <div class="homeKontaktMsg" hidden data-form-msg></div>
+                  <button type="submit" class="homeKontaktSubmit" data-submit-btn>
+                    <span>Wyślij wiadomość</span>
+                    ${iconArrow()}
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="homeMapSection">
+        <iframe
+          class="homeMapIframe"
+          src="https://maps.google.com/maps?q=ul.+Nenckiego+127%2F5,+52-212+Wrocław&output=embed&hl=pl&z=16"
+          title="Kolorowe Centrum — mapa dojazdu, ul. Nenckiego 127/5 Wrocław"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
     </div>
   `);
 
