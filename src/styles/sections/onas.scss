@@ -1,0 +1,196 @@
+@use "../tokens" as *;
+@use "../mixins" as *;
+
+// ─── O nas – podstrona ─────────────────────────────────────────────────────
+
+.onasPage__section {
+  padding-block: 56px 80px;
+}
+
+// Lista kart członków zespołu
+.teamList {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 6vw, 72px);
+  margin-top: 40px;
+}
+
+// Karta jednej osoby
+.teamCard {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: clamp(32px, 4vw, 64px);
+  align-items: start;
+  background: var(--ac-bg, rgba(141, 182, 65, 0.05));
+  border: 1px solid rgba(30, 45, 39, 0.07);
+  border-radius: $radius-xl;
+  padding: clamp(24px, 3vw, 48px);
+  box-shadow: $shadow-sm;
+  position: relative;
+  overflow: hidden;
+}
+
+.teamCard--reverse {
+  grid-template-columns: 1fr 320px;
+}
+
+.teamCard--reverse .teamCard__photoWrap {
+  order: 2;
+}
+
+.teamCard--reverse .teamCard__body {
+  order: 1;
+}
+
+// Zdjęcie / placeholder
+.teamCard__photoWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.teamCard__deco {
+  position: absolute;
+  inset: -8px;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.teamCard__photoPlaceholder {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 5 / 6;
+  border-radius: $radius-lg;
+  background: rgba(30, 45, 39, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(30, 45, 39, 0.3);
+  overflow: hidden;
+
+  &::after {
+    content: "Zdjęcie";
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(30, 45, 39, 0.35);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+}
+
+.teamCard__photoIcon {
+  width: 72px;
+  height: 72px;
+}
+
+// Treść obok zdjęcia
+.teamCard__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 4px;
+}
+
+.teamCard__pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
+
+.teamCard__name {
+  margin: 0;
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: $ink;
+  line-height: 1.15;
+}
+
+.teamCard__role {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ac-line);
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+.teamCard__roleExtra {
+  font-size: 13px;
+  font-weight: 700;
+  color: $muted;
+  line-height: 1.4;
+}
+
+.teamCard__divider {
+  width: 40px;
+  height: 3px;
+  border-radius: 4px;
+  margin: 10px 0 12px;
+  flex-shrink: 0;
+}
+
+.teamCard__text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.teamCard__para {
+  margin: 0;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: $ink;
+  line-height: 1.7;
+}
+
+// Responsive: tabletka
+@media (max-width: 900px) {
+  .teamCard,
+  .teamCard--reverse {
+    grid-template-columns: 200px 1fr;
+    gap: 24px;
+  }
+
+  .teamCard--reverse .teamCard__photoWrap {
+    order: 0;
+  }
+
+  .teamCard--reverse .teamCard__body {
+    order: 0;
+  }
+}
+
+// Responsive: mobile
+@media (max-width: 600px) {
+  .teamCard,
+  .teamCard--reverse {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .teamCard__photoPlaceholder {
+    aspect-ratio: 4 / 3;
+    max-height: 240px;
+  }
+
+  .teamCard--reverse .teamCard__photoWrap {
+    order: 0;
+  }
+}

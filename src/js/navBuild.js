@@ -14,13 +14,13 @@ export function buildNavFromManifest(manifest) {
   const list = document.querySelector('[data-nav-list]');
   if (!list) return;
 
-  const topics = (manifest?.topics || []).filter((t) => t.hasSub);
+  const topics = (manifest?.topics || []).filter((t) => t.hasSub && t.slug !== 'o-nas');
   list.replaceChildren();
 
-  const liHome = document.createElement('li');
-  liHome.className = 'navItem';
-  liHome.innerHTML = '<a class="navLink" href="." data-link>Strona główna</a>';
-  list.appendChild(liHome);
+  const liOnas = document.createElement('li');
+  liOnas.className = 'navItem';
+  liOnas.innerHTML = '<a class="navLink" href="o-nas" data-link>O nas</a>';
+  list.appendChild(liOnas);
 
   if (topics.length) {
     const li = document.createElement('li');

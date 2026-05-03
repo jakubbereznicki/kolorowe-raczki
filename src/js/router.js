@@ -18,6 +18,8 @@ import { renderRezerwacje } from '../pages/rezerwacje.js';
 import { renderTopicSubpage } from '../pages/topicSubpage.js';
 import { renderGaleria } from '../pages/galeria.js';
 import { renderPolitykaPrywatnosci } from '../pages/politykaPrywatnosci.js';
+import { renderOnas } from '../pages/onas.js';
+import { renderDziennyOpiekun } from '../pages/dziennyOpiekun.js';
 import { refreshRevealOnScroll } from './revealOnScroll.js';
 import { initCalendar } from './calendar.js';
 import { initSlider } from './slider.js';
@@ -32,6 +34,8 @@ function buildRoutes(manifest) {
     { path: '/rezerwacje', title: 'Rezerwacje — Kolorowe Centrum', render: () => renderRezerwacje() },
     { path: '/galeria', title: 'Galeria — Kolorowe Centrum', render: () => renderGaleria() },
     { path: '/polityka-prywatnosci', title: 'Polityka Prywatności — Kolorowe Centrum', render: () => renderPolitykaPrywatnosci() },
+    { path: '/o-nas', title: 'O nas — Kolorowe Centrum', render: () => renderOnas() },
+    { path: '/dzienny-opiekun', title: 'Dzienny Opiekun — Kolorowe Centrum', render: () => renderDziennyOpiekun() },
   ];
   for (const t of m) {
     if (!t.hasSub) continue;

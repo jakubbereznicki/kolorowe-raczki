@@ -1,0 +1,530 @@
+@use "../tokens" as *;
+@use "../mixins" as *;
+
+// ══════════════════════════════════════════════════════
+//  Dzienny Opiekun – podstrona
+// ══════════════════════════════════════════════════════
+
+// ── HERO (pełna szerokość, rozmyte tło) ──────────────
+
+.doHero {
+  position: relative;
+  overflow: hidden;
+  padding-block: 64px 72px;
+  isolation: isolate;
+}
+
+// zdjęcie jako tło — mocno rozmyte
+.doHero__bgImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: none;
+  opacity: 0.45;
+  z-index: -2;
+  pointer-events: none;
+  display: block;
+}
+
+// gradient-overlay: jasna góra → przezroczysty dół
+.doHero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to bottom,  rgba(#fffaf3, 0.82) 0%, rgba(#fffaf3, 0.55) 60%, rgba(#fffaf3, 0.75) 100%),
+    linear-gradient(135deg, rgba(#8db641, 0.08) 0%, transparent 70%);
+}
+
+.doHero__container {
+  position: relative;
+  z-index: 1;
+}
+
+// breadcrumb — nad kartą, nieco jaśniejszy na rozmytym tle
+.doBreadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: $muted;
+  margin-bottom: 20px;
+}
+
+.doBreadcrumb__link {
+  color: $green-600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.doBreadcrumb__sep {
+  color: rgba(30, 45, 39, 0.35);
+}
+
+.doBreadcrumb__current {
+  color: $ink;
+}
+
+// szklana karta z treścią
+.doHero__glass {
+  position: relative;
+  max-width: 720px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: $radius-xl;
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.9) inset,
+    $shadow-md;
+  padding: clamp(28px, 4vw, 48px) clamp(28px, 4vw, 52px);
+  overflow: hidden;
+}
+
+// kolorowy akcent w prawym rogu karty
+.doHero__glassAccent {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba($green-500, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.doHero__glassInner {
+  position: relative;
+  z-index: 1;
+}
+
+.doHero__title {
+  margin: 0 0 12px;
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: $ink;
+  line-height: 1.05;
+}
+
+.doHero__titleAccent {
+  color: $green-500;
+}
+
+.doHero__lead {
+  margin: 0 0 14px;
+  font-size: clamp(15px, 1.3vw, 19px);
+  font-weight: 800;
+  color: $ink;
+  line-height: 1.4;
+
+  strong {
+    color: $green-600;
+  }
+}
+
+.doHero__sub {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: $muted;
+  line-height: 1.75;
+  max-width: 54ch;
+}
+
+// ── CO NAS WYRÓŻNIA ──────────────────────────────────
+
+.doFeatures {
+  padding-block: 56px;
+}
+
+.doFeaturesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2.5vw, 28px);
+  margin-top: 32px;
+}
+
+.doCard {
+  background: $card;
+  border: 1px solid rgba(30, 45, 39, 0.07);
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 16px;
+  align-items: start;
+  overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+}
+
+// lewa kolumna karty — ikona + tytuł + tekst
+.doCard__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.doCard__top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.doCard__iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.doCard__icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.doCard__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: $ink;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  padding-top: 3px;
+}
+
+.doCard__text {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: $muted;
+  line-height: 1.7;
+}
+
+// prawa kolumna karty — zdjęcie
+.doCard__imgWrap {
+  border-radius: $radius-sm;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.doCard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+// ── DOFINANSOWANIE ───────────────────────────────────
+
+.doSubsidy {
+  position: relative;
+  padding-block: clamp(48px, 6vw, 80px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+// zdjęcie tła
+.doSubsidy__bgImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -2;
+  display: block;
+  filter: blur(10px);
+  transform: scale(1.04);
+}
+
+// miękki zielony overlay
+.doSubsidy__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    135deg,
+    rgba($green-800, 0.72) 0%,
+    rgba($green-700, 0.65) 60%,
+    rgba($green-600, 0.58) 100%
+  );
+}
+
+.doSubsidy__container {
+  position: relative;
+  z-index: 1;
+}
+
+.doSubsidy__inner {
+  display: grid;
+  grid-template-columns: 1fr 560px;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+
+.doSubsidy__kicker {
+  display: inline-flex;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.doSubsidy__title {
+  margin: 0 0 16px;
+  font-size: clamp(20px, 2.4vw, 30px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.doSubsidy__lead {
+  margin: 0 0 24px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+}
+
+.doSubsidy__list {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.doSubsidy__item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+
+  strong {
+    color: #fff;
+    font-weight: 800;
+  }
+}
+
+.doSubsidy__checkIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  color: $yellow-500;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.doSubsidy__cta {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 20px;
+
+  strong {
+    color: #fff;
+    font-weight: 800;
+  }
+}
+
+.doSubsidy__gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.doSubsidy__galleryImg {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: $radius-md;
+  display: block;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+// ── OPIS + CENNIK ─────────────────────────────────────
+
+.doBottom {
+  padding-block: 64px 80px;
+}
+
+.doBottom__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+.doBottom__title {
+  margin: 8px 0 20px;
+  font-size: clamp(18px, 1.8vw, 24px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: $ink;
+  line-height: 1.25;
+}
+
+.doBottom__textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: $ink;
+    line-height: 1.75;
+  }
+}
+
+.doBottom__photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.doBottom__photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: $radius-md;
+  display: block;
+}
+
+// Tabela cennik
+
+.doPricing {
+  border: 1px solid rgba(30, 45, 39, 0.09);
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  background: $card;
+}
+
+.doPricing__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(30, 45, 39, 0.07);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.doPricing__row--discount {
+  background: rgba(232, 93, 77, 0.04);
+}
+
+.doPricing__row--highlight {
+  background: $green-100;
+}
+
+.doPricing__label {
+  font-size: 14px;
+  font-weight: 700;
+  color: $ink;
+  line-height: 1.4;
+}
+
+.doPricing__value {
+  font-size: 15px;
+  font-weight: 800;
+  color: $ink;
+  white-space: nowrap;
+}
+
+.doPricing__value--discount {
+  color: $coral-700;
+}
+
+.doPricing__value--highlight {
+  color: $green-700;
+  font-size: 17px;
+}
+
+// ── RESPONSIVE ──────────────────────────────────────
+
+@media (max-width: 1024px) {
+  .doSubsidy__inner {
+    grid-template-columns: 1fr 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  .doHero__glass {
+    max-width: 100%;
+  }
+
+  .doFeaturesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .doSubsidy__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .doSubsidy__gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .doBottom__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .doSubsidy__gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .doBottom__photos {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .doBottom__photo:last-child {
+    display: none;
+  }
+}
