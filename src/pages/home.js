@@ -330,6 +330,9 @@ export async function renderHome() {
         <div class="container">
           <div class="sectionHeader sectionHeader--center" data-reveal>
             <div>
+              <h2 class="sectionTitle" id="dlaczego-tytul" style="max-width: 38ch; margin-left: auto; margin-right: auto">
+                Tworzymy przestrzeń, w której dzieci czują się bezpieczne, ważne i swobodnie się rozwijają. Dlaczego wybierają nas rodzice?
+              </h2>
               <div class="homeDlaczegoLogo">
                 <img
                   class="homeDlaczegoLogo__img"
@@ -341,9 +344,6 @@ export async function renderHome() {
                   decoding="async"
                 />
               </div>
-              <h2 class="sectionTitle" id="dlaczego-tytul" style="max-width: 38ch; margin-left: auto; margin-right: auto">
-                Tworzymy przestrzeń, w której dzieci czują się bezpieczne, ważne i swobodnie się rozwijają. Dlaczego wybierają nas rodzice?
-              </h2>
             </div>
           </div>
           <div class="offersGrid">

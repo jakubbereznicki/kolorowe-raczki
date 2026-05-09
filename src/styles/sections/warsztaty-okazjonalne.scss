@@ -1,0 +1,574 @@
+@use "../tokens" as *;
+@use "../mixins" as *;
+
+// ══════════════════════════════════════════════════════════════════════════════
+// Warsztaty Okazjonalne
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ── HERO ──────────────────────────────────────────────────────────────────────
+
+.warsHero {
+  padding-block: clamp(52px, 7vw, 100px) clamp(48px, 7vw, 96px);
+}
+
+.warsHero__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+
+.warsHero__text {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.warsHero__title {
+  margin: 0;
+  font-size: clamp(38px, 5.5vw, 72px);
+  font-weight: 900;
+  color: $ink;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.warsHero__titleAccent {
+  color: $green-500;
+  font-style: italic;
+}
+
+.warsHero__emoji {
+  font-style: normal;
+  font-size: 0.55em;
+  vertical-align: super;
+  margin-left: 4px;
+}
+
+.warsHero__imgWrap {
+  border-radius: $radius-xl;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+  background: $green-100;
+}
+
+.warsHero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+// ── WARSZTATY KREATYWNE ────────────────────────────────────────────────────────
+
+.warsCreative {
+  background: $card;
+  border-radius: $radius-xl;
+  margin-inline: clamp(4px, 1.5vw, 20px);
+  padding-block: clamp(44px, 6vw, 72px);
+  box-shadow: $shadow-sm;
+  border: 1px solid rgba(30, 45, 39, 0.06);
+}
+
+.warsCreative__accent {
+  color: $green-500;
+}
+
+// ── Siatka 2 × 4 kart ─────────────────────────────────────────────────────────
+
+.warsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(14px, 1.8vw, 22px);
+  margin-top: clamp(32px, 4vw, 48px);
+}
+
+// ── Karta warsztatu ────────────────────────────────────────────────────────────
+
+.warsCard {
+  display: grid;
+  grid-template-columns: 1fr 160px;
+  border-radius: $radius-lg;
+  background: $cream;
+  border: 1px solid rgba(30, 45, 39, 0.08);
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(30, 45, 39, 0.05);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.warsCard:hover {
+  transform: translateY(-2px);
+  box-shadow: $shadow-md;
+}
+
+.warsCard__content {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.warsCard__iconWrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.warsCard__iconWrap svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.warsCard__title {
+  margin: 0;
+  font-size: clamp(13px, 1.1vw, 15px);
+  font-weight: 800;
+  color: $ink;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.warsCard__desc {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: $muted;
+  line-height: 1.65;
+}
+
+.warsCard__imgWrap {
+  overflow: hidden;
+  background: $green-100;
+}
+
+.warsCard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+// ── SEKCJA DOLNA – 3 KOLUMNY ──────────────────────────────────────────────────
+
+.warsColumns {
+  padding-block: clamp(44px, 6vw, 72px);
+}
+
+.warsColumns__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 2vw, 22px);
+  align-items: stretch;
+}
+
+.warsCol {
+  border-radius: $radius-xl;
+  overflow: hidden;
+  border: 1px solid rgba(30, 45, 39, 0.08);
+  box-shadow: $shadow-sm;
+  height: 100%;
+}
+
+.warsCol--birthday {
+  background: rgba(255, 238, 235, 0.85);
+}
+
+.warsCol--occasional {
+  background: rgba(255, 251, 230, 0.9);
+}
+
+.warsCol--holiday {
+  background: rgba(232, 242, 218, 0.7);
+}
+
+// Nagłówek kolumny
+.warsCol__head {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.warsCol__head--green {
+  background: linear-gradient(135deg, $green-100, rgba(141, 182, 65, 0.2));
+}
+
+.warsCol__head--coral {
+  background: linear-gradient(135deg, $coral-100, rgba(232, 93, 77, 0.18));
+}
+
+.warsCol__headEmoji {
+  font-size: 20px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.warsCol__headTitle {
+  margin: 0;
+  font-size: clamp(13.5px, 1.3vw, 16.5px);
+  font-weight: 900;
+  color: $ink;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  flex: 1;
+}
+
+.warsCol__headStar {
+  font-size: 14px;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.warsCol__body {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.warsCol__desc {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(30, 45, 39, 1);
+  line-height: 1.7;
+}
+
+.warsCol__photo {
+  border-radius: $radius-md;
+  overflow: hidden;
+  background: $green-100;
+}
+
+.warsCol__photoImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.warsCol__btn {
+  align-self: flex-start;
+  font-size: 13.5px;
+  padding: 10px 20px;
+}
+
+// Lista warsztatów okolicznościowych
+.warsOccList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.warsOccItem {
+  display: grid;
+  grid-template-columns: 1fr 96px;
+  border-radius: $radius-sm;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(30, 45, 39, 0.07);
+  overflow: hidden;
+}
+
+.warsOccItem__texts {
+  padding: 12px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+
+.warsOccItem__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: $ink;
+  line-height: 1.3;
+}
+
+.warsOccItem__desc {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: $muted;
+  line-height: 1.6;
+}
+
+.warsOccItem__photo {
+  overflow: hidden;
+  background: $green-100;
+}
+
+.warsOccItem__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+// Pozycje świąteczne
+.warsHoliItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.warsHoliItem + .warsHoliItem {
+  padding-top: 14px;
+  border-top: 1px solid rgba(30, 45, 39, 0.08);
+}
+
+.warsHoliItem__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: $ink;
+  line-height: 1.3;
+}
+
+.warsHoliItem__desc {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: $muted;
+  line-height: 1.65;
+}
+
+.warsHoliItem__photo {
+  border-radius: $radius-sm;
+  overflow: hidden;
+  background: $green-100;
+  margin-top: 10px;
+}
+
+.warsHoliItem__img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+
+// ── CTA ────────────────────────────────────────────────────────────────────────
+
+.warsCta {
+  background: linear-gradient(140deg, $green-100 0%, $cream 45%, rgba(240, 193, 75, 0.12) 100%);
+  border-top: 1px solid rgba(141, 182, 65, 0.2);
+  padding-block: clamp(56px, 8vw, 96px);
+  position: relative;
+  overflow: hidden;
+}
+
+.warsCta::before {
+  content: '';
+  position: absolute;
+  top: -140px;
+  right: -100px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240, 193, 75, 0.18), transparent 65%);
+  pointer-events: none;
+}
+
+.warsCta__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.warsCta__text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.warsCta__title {
+  margin: 0;
+  font-size: clamp(30px, 3.8vw, 52px);
+  font-weight: 900;
+  color: $ink;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.warsCta__accent {
+  color: $green-500;
+}
+
+.warsCta__lead {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: $muted;
+  line-height: 1.65;
+  max-width: 44ch;
+}
+
+.warsCta__btn {
+  align-self: flex-start;
+  font-size: 15.5px;
+  padding: 14px 28px;
+  gap: 8px;
+  border-radius: $radius-md;
+}
+
+// Zdjęcia w CTA
+.warsCta__photos {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 240px;
+  gap: 12px;
+}
+
+.warsCta__photo {
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background: $green-100;
+}
+
+.warsCta__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.warsCta__photo--2 {
+  transform: translateY(-14px);
+}
+
+.warsCta__rainbow {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// RWD
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ── Tablet ≤ 1024px ───────────────────────────────────────────────────────────
+@include down($bpMd) {
+  .warsHero__grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin-inline: auto;
+  }
+
+  .warsHero__imgWrap {
+    aspect-ratio: 4 / 3;
+    max-width: 480px;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .warsCreative {
+    margin-inline: 0;
+    border-radius: $radius-lg;
+  }
+
+  .warsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .warsCard {
+    grid-template-columns: 1fr 140px;
+  }
+
+  .warsColumns__grid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-inline: auto;
+  }
+
+  .warsCta__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .warsCta__photos {
+    display: none;
+  }
+}
+
+// ── Małe ekrany ≤ 500px ───────────────────────────────────────────────────────
+@include down($bpSm) {
+  .warsHero {
+    padding-block: 36px 32px;
+  }
+
+  .warsHero__grid {
+    max-width: 100%;
+  }
+
+  .warsHero__title {
+    font-size: clamp(32px, 9vw, 44px);
+  }
+
+  .warsCreative {
+    border-radius: 0;
+    margin-inline: -16px;
+    padding-inline: 16px;
+  }
+
+  .warsGrid {
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .warsCard {
+    grid-template-columns: 1fr 100px;
+  }
+
+  .warsCard__imgWrap {
+    min-height: 110px;
+  }
+
+  .warsColumns__grid {
+    max-width: 100%;
+    gap: 12px;
+  }
+
+  .warsCol__photoImg {
+    height: 160px;
+  }
+
+  .warsCta {
+    padding-block: 44px 56px;
+  }
+
+  .warsCta__title {
+    font-size: clamp(26px, 7.5vw, 36px);
+  }
+
+  .warsCta__btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+// ── Duże ekrany ≥ 1440px ──────────────────────────────────────────────────────
+@include up(1440px) {
+  .warsCard {
+    grid-template-columns: 1fr 200px;
+  }
+
+  .warsCard__imgWrap {
+    min-height: 160px;
+  }
+}

@@ -20,6 +20,7 @@ import { renderGaleria } from '../pages/galeria.js';
 import { renderPolitykaPrywatnosci } from '../pages/politykaPrywatnosci.js';
 import { renderOnas } from '../pages/onas.js';
 import { renderDziennyOpiekun } from '../pages/dziennyOpiekun.js';
+import { renderWarsztatyOkazjonalne } from '../pages/warsztatyOkazjonalne.js';
 import { refreshRevealOnScroll } from './revealOnScroll.js';
 import { initCalendar } from './calendar.js';
 import { initSlider } from './slider.js';
@@ -36,6 +37,7 @@ function buildRoutes(manifest) {
     { path: '/polityka-prywatnosci', title: 'Polityka Prywatności — Kolorowe Centrum', render: () => renderPolitykaPrywatnosci() },
     { path: '/o-nas', title: 'O nas — Kolorowe Centrum', render: () => renderOnas() },
     { path: '/dzienny-opiekun', title: 'Dzienny Opiekun — Kolorowe Centrum', render: () => renderDziennyOpiekun() },
+    { path: '/warsztaty-okazjonalne', title: 'Warsztaty Okazjonalne — Kolorowe Centrum', render: () => renderWarsztatyOkazjonalne() },
   ];
   for (const t of m) {
     if (!t.hasSub) continue;
@@ -76,6 +78,15 @@ function scrollToHash(hash) {
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+/** Po zmianie widoku SPA: góra strony albo kotwica z hasha (np. /strona#sekcja). */
+function scrollAfterNavigation(hash) {
+  if (hash) {
+    requestAnimationFrame(() => scrollToHash(hash));
+    return;
+  }
+  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+}
+
 async function renderCurrent() {
   const app = document.getElementById('app');
   if (!app) return;
@@ -104,7 +115,7 @@ async function renderCurrent() {
   refreshRevealOnScroll(app);
   initLazyImages(app);
 
-  requestAnimationFrame(() => scrollToHash(hash));
+  scrollAfterNavigation(hash);
 }
 
 function navigate(to) {

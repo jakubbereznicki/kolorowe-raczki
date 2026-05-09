@@ -1,0 +1,125 @@
+@use "../tokens" as *;
+
+.pageLoader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $bg;
+  isolation: isolate;
+  transition: opacity 0.45s ease, visibility 0s linear 0.45s;
+}
+
+// Ta sama warstwa „plam” co `body::before` w base.scss — spójne tło ze stroną
+.pageLoader::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 1000px 720px at 4% 6%, rgba(47, 157, 92, 0.12), transparent 60%),
+    radial-gradient(ellipse 880px 640px at 98% 8%, rgba(240, 193, 75, 0.11), transparent 58%),
+    radial-gradient(ellipse 900px 700px at 3% 38%, rgba(58, 163, 217, 0.1), transparent 58%),
+    radial-gradient(ellipse 800px 600px at 97% 32%, rgba(47, 157, 92, 0.08), transparent 56%),
+    radial-gradient(ellipse 750px 580px at 6% 58%, rgba(240, 193, 75, 0.09), transparent 58%),
+    radial-gradient(ellipse 820px 640px at 95% 52%, rgba(232, 93, 77, 0.07), transparent 58%),
+    radial-gradient(ellipse 880px 700px at 5% 85%, rgba(47, 157, 92, 0.1), transparent 60%),
+    radial-gradient(ellipse 760px 600px at 88% 78%, rgba(58, 163, 217, 0.09), transparent 58%),
+    radial-gradient(ellipse 800px 680px at 50% 98%, rgba(240, 193, 75, 0.08), transparent 58%);
+}
+
+.pageLoader--done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.pageLoader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(20px, 4vw, 32px);
+  padding: 24px;
+  max-width: 100%;
+}
+
+.pageLoader__logo {
+  width: min(140px, 38vw);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.92);
+}
+
+.pageLoader--animating .pageLoader__logo {
+  animation: pageLoaderLogoIn 0.55s cubic-bezier(0.34, 1.35, 0.64, 1) forwards;
+}
+
+.pageLoader__word {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.02em;
+  font-family: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(1.65rem, 4.2vw, 2.45rem);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+.pageLoader__char {
+  display: inline-block;
+  color: var(--char-color, $ink);
+  opacity: 0;
+  transform: translateY(0.28em) scale(0.88);
+  text-shadow:
+    0.06em 0.06em 0 rgba(30, 45, 39, 0.14),
+    -0.03em -0.03em 0 rgba(255, 255, 255, 0.45);
+}
+
+.pageLoader__space {
+  display: inline-block;
+  width: 0.32em;
+}
+
+.pageLoader--animating .pageLoader__char:not(.pageLoader__space) {
+  animation: pageLoaderCharIn 0.42s cubic-bezier(0.34, 1.45, 0.64, 1) forwards;
+  animation-delay: calc(var(--i) * 90ms);
+}
+
+.pageLoader--reduce .pageLoader__logo {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+.pageLoader--reduce .pageLoader__char:not(.pageLoader__space) {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+@keyframes pageLoaderLogoIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pageLoaderCharIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+html.pageLoader-active,
+html.pageLoader-active body {
+  overflow: hidden;
+}

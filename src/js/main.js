@@ -7,6 +7,7 @@ import { initLightbox } from './galleryLightbox.js';
 import { decorateBrandText } from './brandText.js';
 import { initContactForm } from './contactForm.js';
 import { initCategoryGallery } from './categoryGalleryModal.js';
+import { runWithPageLoader } from './pageLoader.js';
 
 document.querySelector('[data-year]')?.replaceChildren(document.createTextNode(String(new Date().getFullYear())));
 decorateBrandText();
@@ -22,5 +23,5 @@ async function boot() {
   await initRouter();
 }
 
-void boot();
+void runWithPageLoader(boot);
 
