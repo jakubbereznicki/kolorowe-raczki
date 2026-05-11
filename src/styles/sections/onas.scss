@@ -42,62 +42,83 @@
   order: 1;
 }
 
-// Zdjęcie / placeholder
+$team-photo-col: 320px;
+$team-photo-col-md: 200px;
+$team-gap: clamp(32px, 4vw, 64px);
+$team-pad: clamp(24px, 3vw, 48px);
+$team-photo-ring: 10px;
+
+// Zdjęcie zespołu — nad warstwą dekoracji (przejrzyste tło = widać akcent w styku kolumn)
 .teamCard__photoWrap {
   position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: transparent;
 }
 
-.teamCard__deco {
-  position: absolute;
-  inset: -8px;
-  width: calc(100% + 16px);
-  height: calc(100% + 16px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.teamCard__photoPlaceholder {
+.teamCard__photoFrame {
   position: relative;
-  z-index: 1;
+  z-index: 0;
   width: 100%;
   aspect-ratio: 5 / 6;
-  border-radius: $radius-lg;
+  border-radius: $radius-md;
+  border: $team-photo-ring solid color-mix(in srgb, var(--ac-line) 50%, transparent);
   background: rgba(30, 45, 39, 0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(30, 45, 39, 0.3);
   overflow: hidden;
-
-  &::after {
-    content: "Zdjęcie";
-    position: absolute;
-    bottom: 16px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 700;
-    color: rgba(30, 45, 39, 0.35);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
 }
 
-.teamCard__photoIcon {
-  width: 72px;
-  height: 72px;
+.teamCard__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  border-radius: calc(#{$radius-md} - #{$team-photo-ring});
+  object-fit: cover;
+  object-position: center 15%;
 }
 
-// Treść obok zdjęcia
+// Treść — nad dekoracją; bez własnego tła (tło karty + akcent między kolumnami)
 .teamCard__body {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 6px;
   padding-top: 4px;
+  min-height: 120px;
+  background: transparent;
+}
+
+// SVG w „szwie” — niżej niż środek karty; dół może wejść pod overflow karty
+.teamCard__decoLayer {
+  position: absolute;
+  z-index: 0;
+  top: 60%;
+  left: calc(#{$team-pad} + #{$team-photo-col} + #{$team-gap} * 0.5);
+  transform: translate(-50%, -40%);
+  width: min(450px, 95vw);
+  aspect-ratio: 1;
+  max-height: 510px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.teamCard--reverse .teamCard__decoLayer {
+  left: auto;
+  right: calc(#{$team-pad} + #{$team-photo-col} + #{$team-gap} * 0.5);
+  transform: translate(50%, -40%);
+}
+
+.teamCard__decoLayer .teamCard__deco {
+  width: 100%;
+  height: 100%;
+  display: block;
+  flex-shrink: 0;
 }
 
 .teamCard__pill {
@@ -174,6 +195,15 @@
   .teamCard--reverse .teamCard__body {
     order: 0;
   }
+
+  .teamCard__decoLayer {
+    left: calc(#{$team-pad} + #{$team-photo-col-md} + 12px);
+  }
+
+  .teamCard--reverse .teamCard__decoLayer {
+    left: auto;
+    right: calc(#{$team-pad} + #{$team-photo-col-md} + 12px);
+  }
 }
 
 // Responsive: mobile
@@ -185,7 +215,7 @@
     padding: 20px;
   }
 
-  .teamCard__photoPlaceholder {
+  .teamCard__photoFrame {
     aspect-ratio: 4 / 3;
     max-height: 240px;
   }
@@ -193,4 +223,17 @@
   .teamCard--reverse .teamCard__photoWrap {
     order: 0;
   }
-}
+
+  /* Szew między zdjęciem a tekstem (układ pionowy), niżej — spód karty przycina */
+  .teamCard__decoLayer {
+    left: 50%;
+    right: auto;
+    top: clamp(240px, 50vw, 320px);
+    transform: translate(-50%, -38%);
+  }
+
+  .teamCard--reverse .teamCard__decoLayer {
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -38%);
+  }}

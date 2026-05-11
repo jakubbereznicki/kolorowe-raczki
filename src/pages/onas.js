@@ -1,9 +1,12 @@
 import { elFromHTML } from './_helpers.js';
 
+const TEAM_PHOTO_BASE = 'content-site/o-nas/podstrona/webp/';
+
 const MEMBERS = [
   {
     id: 'nataliia',
     name: 'Nataliia Serbai',
+    photo: 'natalia.webp',
     role: 'Założycielka Centrum Rozwoju „Kolorowe Rączki"',
     roleExtra: 'Manager Football Baby & Football Academy Żórawina',
     accent: 'green',
@@ -20,6 +23,7 @@ const MEMBERS = [
   {
     id: 'emilia',
     name: 'Emilia Burzawa',
+    photo: 'emi.webp',
     role: 'Studentka terapii zajęciowej, trenerka piłki nożnej',
     roleExtra: 'Certyfikowana trenerka sensoplastyki oraz animatorka dziecięca',
     accent: 'coral',
@@ -32,6 +36,7 @@ const MEMBERS = [
   {
     id: 'veronika',
     name: 'Veronika Sopilniak',
+    photo: 'veronika.webp',
     role: 'Opiekun dzienny – Kolorowe Rączki',
     roleExtra: null,
     accent: 'sky',
@@ -45,6 +50,7 @@ const MEMBERS = [
   {
     id: 'iwona',
     name: 'Iwona Juszczyk',
+    photo: 'iwona.webp',
     role: 'Opiekun dzienny z ukończonym kursem opiekuna dziennego',
     roleExtra: 'Wieloletnie doświadczenie w pracy z najmłodszymi dziećmi',
     accent: 'yellow',
@@ -63,11 +69,12 @@ const ACCENTS = {
   yellow: { pill: '#fff6dd', pillText: '#856500', line: '#f0c14b', bg: 'rgba(240,193,75,0.06)'  },
 };
 
+// Akcenty graficzne (stonowane, za treścią).
 const DECO_SHAPES = {
-  green:  `<svg class="teamCard__deco" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="38" fill="none" stroke="#8db641" stroke-width="2" stroke-dasharray="6 6" opacity=".35"/></svg>`,
-  coral:  `<svg class="teamCard__deco" viewBox="0 0 80 80" aria-hidden="true"><rect x="4" y="4" width="72" height="72" rx="20" fill="none" stroke="#e85d4d" stroke-width="2" stroke-dasharray="6 6" opacity=".35"/></svg>`,
-  sky:    `<svg class="teamCard__deco" viewBox="0 0 80 80" aria-hidden="true"><polygon points="40,4 76,60 4,60" fill="none" stroke="#3aa3d9" stroke-width="2" stroke-dasharray="6 6" opacity=".35"/></svg>`,
-  yellow: `<svg class="teamCard__deco" viewBox="0 0 80 80" aria-hidden="true"><path d="M40 6 l9 25h26l-21 15 8 25-22-16-22 16 8-25L5 31h26z" fill="none" stroke="#f0c14b" stroke-width="2" stroke-dasharray="5 5" opacity=".35"/></svg>`,
+  green:  `<svg class="teamCard__deco" viewBox="0 0 80 80" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><circle cx="40" cy="40" r="38" fill="none" stroke="#8db641" stroke-width="1.75" stroke-dasharray="6 6" opacity=".18"/></svg>`,
+  coral:  `<svg class="teamCard__deco" viewBox="0 0 80 80" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><rect x="4" y="4" width="72" height="72" rx="20" fill="none" stroke="#e85d4d" stroke-width="1.75" stroke-dasharray="6 6" opacity=".18"/></svg>`,
+  sky:    `<svg class="teamCard__deco" viewBox="0 0 80 80" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><polygon points="40,4 76,60 4,60" fill="none" stroke="#3aa3d9" stroke-width="1.75" stroke-dasharray="6 6" opacity=".18"/></svg>`,
+  yellow: `<svg class="teamCard__deco" viewBox="0 0 80 80" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path d="M40 6 l9 25h26l-21 15 8 25-22-16-22 16 8-25L5 31h26z" fill="none" stroke="#f0c14b" stroke-width="1.75" stroke-dasharray="5 5" opacity=".18"/></svg>`,
 };
 
 function buildCard(member, idx) {
@@ -86,14 +93,19 @@ function buildCard(member, idx) {
   return `
     <article class="teamCard${isEven ? ' teamCard--reverse' : ''}" data-reveal style="--ac-pill:${ac.pill};--ac-pill-text:${ac.pillText};--ac-line:${ac.line};--ac-bg:${ac.bg}">
       <div class="teamCard__photoWrap">
-        ${deco}
-        <div class="teamCard__photoPlaceholder" aria-label="Zdjęcie ${member.name}">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true" class="teamCard__photoIcon">
-            <circle cx="32" cy="22" r="13" fill="currentColor" opacity=".18"/>
-            <ellipse cx="32" cy="52" rx="22" ry="14" fill="currentColor" opacity=".12"/>
-          </svg>
+        <div class="teamCard__photoFrame">
+          <img
+            class="teamCard__photo"
+            src="${TEAM_PHOTO_BASE}${member.photo}"
+            alt=""
+            width="640"
+            height="768"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
+      <div class="teamCard__decoLayer" aria-hidden="true">${deco}</div>
       <div class="teamCard__body">
         <div class="teamCard__pill" style="background:var(--ac-pill);color:var(--ac-pill-text)">Zespół Kolorowych Rączek</div>
         <h2 class="teamCard__name">${member.name}</h2>

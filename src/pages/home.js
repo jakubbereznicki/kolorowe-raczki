@@ -27,13 +27,13 @@ const GALLERY_THUMBNAILS = [
 
 /** Zdjęcia z katalogu treści (tymczasowe — do wymiany) */
 const SLIDE_IMAGES = [
-  'content-site/zajecia-cykliczne-w-placowkach/podstrona/FB_IMG_1742389521939.jpg',
+  'content-site/pakiety-urodzinowe/podstrona/DSC00002.JPG',
   'content-site/pakiety-urodzinowe/podstrona/DSC00010.JPG',
   'content-site/dzienny-opiekun/podstrona/IMG_20251118_085211.jpg',
 ];
 
 const SLIDE_TEXTS = [
-  'Centrum Rozwoju Twojego Dziecka „Kolorowe Rączki” to miejsce stworzone z myślą o dzieciach od urodzenia do 12 lat.',
+  'Zapewniamy kameralną opiekę dla maks. 5 dzieci w atmosferze rodzicielstwa bliskości. Wyróżnia nas proces dwustronnej adaptacji – wspieramy w tym ważnym kroku zarówno malucha, jak i rodzica, dbając o Wasze wspólne poczucie bezpieczeństwa.',
   'Wspieramy rozwój najmłodszych poprzez zajęcia, warsztaty, eventy oraz codzienną opiekę w kameralnych grupach. Organizujemy urodziny, nocowanki, wyjazdy oraz animacje na weselach, chrzcinach i innych wydarzeniach.',
   'W ramach Dziennego Opiekuna „Kolorowe Rączki” zapewniamy opiekę maksymalnie dla 5 dzieci, dbając o domową atmosferę, bliskość i indywidualne podejście oparte na rodzicielstwie bliskości.',
 ];
