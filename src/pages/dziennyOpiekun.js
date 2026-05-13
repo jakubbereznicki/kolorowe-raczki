@@ -4,20 +4,20 @@ import { resolveAppUrl } from '../js/basePath.js';
 const BASE = 'content-site/dzienny-opiekun/podstrona/';
 
 const PHOTOS = {
-  hero:    BASE + 'IMG_20251014_132654.jpg',
-  feat1:   BASE + 'IMG_20251014_132754.jpg',
-  feat2:   BASE + 'IMG_20251021_162358.jpg',
-  feat3:   BASE + 'IMG_20251021_164446.jpg',
-  feat4:   BASE + 'IMG_20251107_095435.jpg',
-  feat5:   BASE + 'IMG_20251113_105337.jpg',
-  feat6:   BASE + 'IMG_20251113_105348.jpg',
-  sub1:    BASE + 'IMG_20251125_094725.jpg',
-  sub2:    BASE + 'IMG_20251127_083126.jpg',
-  sub3:    BASE + 'IMG_20251118_085211.jpg',
-  sub4:    BASE + 'IMG_20251118_085318.jpg',
-  bot1:    BASE + 'IMG_20251113_160207.jpg',
-  bot2:    BASE + 'IMG_20251113_160302.jpg',
-  bot3:    BASE + 'IMG_20251117_105523.jpg',
+  hero:    BASE + 'IMG_20251014_132654.webp',
+  feat1:   BASE + 'IMG_20251014_132754.webp',
+  feat2:   BASE + 'IMG_20251021_162358.webp',
+  feat3:   BASE + 'IMG_20251021_164446.webp',
+  feat4:   BASE + 'IMG_20251107_095435.webp',
+  feat5:   BASE + 'IMG_20251113_105337.webp',
+  feat6:   BASE + 'IMG_20251113_105348.webp',
+  sub1:    BASE + 'IMG_20251125_094725.webp',
+  sub2:    BASE + 'IMG_20251127_083126.webp',
+  sub3:    BASE + 'IMG_20251118_085211.webp',
+  sub4:    BASE + 'IMG_20251118_085318.webp',
+  bot1:    BASE + 'IMG_20251113_160207.webp',
+  bot2:    BASE + 'IMG_20251113_160302.webp',
+  bot3:    BASE + 'IMG_20251117_105523.webp',
 };
 
 function p(key) {

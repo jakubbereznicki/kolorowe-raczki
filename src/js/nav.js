@@ -14,6 +14,68 @@ function closeAllDropdowns(root = document) {
   });
 }
 
+/** Desktop ≥1024px: chowa <header.siteHeader przy scroll w dół, pokazuje przy scroll w górę / przy górze strony. */
+function initSiteHeaderScrollHide(navMount) {
+  const header = document.querySelector('.siteHeader');
+  if (!header) return;
+
+  const desktopMq = window.matchMedia('(min-width: 1024px)');
+  const reduceMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let prevScrollY = window.scrollY;
+  let ticking = false;
+
+  const revealHeader = () => {
+    header.classList.remove('siteHeader--scrollHidden');
+  };
+
+  const hideHeader = () => {
+    header.classList.add('siteHeader--scrollHidden');
+    closeAllDropdowns(navMount ?? document);
+  };
+
+  function updateFromScroll() {
+    ticking = false;
+
+    if (!desktopMq.matches || reduceMq.matches) {
+      revealHeader();
+      prevScrollY = window.scrollY;
+      return;
+    }
+
+    const y = window.scrollY;
+
+    if (y <= 32) {
+      revealHeader();
+      prevScrollY = y;
+      return;
+    }
+
+    const dy = y - prevScrollY;
+    const dirThreshold = 2;
+
+    if (dy > dirThreshold && y > 48) hideHeader();
+    else if (dy < -dirThreshold) revealHeader();
+
+    prevScrollY = y;
+  }
+
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(updateFromScroll);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const onMq = () => {
+    prevScrollY = window.scrollY;
+    if (!desktopMq.matches || reduceMq.matches) revealHeader();
+  };
+
+  desktopMq.addEventListener('change', onMq);
+  reduceMq.addEventListener('change', onMq);
+}
+
 export function initNav() {
   const nav = document.querySelector('[data-nav]');
   const toggle = document.querySelector('[data-nav-toggle]');
@@ -107,5 +169,7 @@ export function initNav() {
       dd.querySelector('[data-dropdown-menu]')?.addEventListener('mouseleave', () => scheduleCloseDropdown(dd));
     });
   }
+
+  initSiteHeaderScrollHide(nav ?? document);
 }
 

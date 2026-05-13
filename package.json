@@ -6,10 +6,12 @@
     "dev": "node dev-server.js",
     "start": "node dev-server.js",
     "build:css": "sass src/styles/main.scss assets/styles.css --style=compressed --no-source-map",
-    "build:content": "node scripts/build-content-manifest.mjs"
+    "build:content": "node scripts/build-content-manifest.mjs",
+    "convert:content-images": "node scripts/convert-content-images-to-webp.mjs"
   },
   "devDependencies": {
     "pdf-parse": "^2.4.5",
-    "sass": "^1.99.0"
+    "sass": "^1.99.0",
+    "sharp": "^0.34.3"
   }
 }

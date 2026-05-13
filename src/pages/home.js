@@ -3,33 +3,33 @@ import { elFromHTML } from './_helpers.js';
 /** Miniaturki do sekcji "Galeria" na stronie głównej */
 const GALLERY_THUMBNAILS = [
   {
-    src: 'content-site/zajecia-cykliczne-w-placowkach/podstrona/sensoplastyka(5).jpg',
+    src: 'content-site/zajecia-cykliczne-w-placowkach/podstrona/sensoplastyka(5).webp',
     caption: 'Zajęcia sensoryczne',
     featured: true,
   },
   {
-    src: 'content-site/warsztaty-okazjonalne/podstrona/1776859333132.JPG',
+    src: 'content-site/warsztaty-okazjonalne/podstrona/1776859333132.webp',
     caption: 'Warsztaty okazjonalne',
   },
   {
-    src: 'content-site/pakiety-urodzinowe/podstrona/DSC00010.JPG',
+    src: 'content-site/pakiety-urodzinowe/podstrona/DSC00010.webp',
     caption: 'Urodziny',
   },
   {
-    src: 'content-site/warsztaty-w-kolorowych-raczkach/podstrona/IMG-20251025-WA0017.jpg',
+    src: 'content-site/warsztaty-w-kolorowych-raczkach/podstrona/IMG-20251025-WA0017.webp',
     caption: 'Warsztaty',
   },
   {
-    src: 'content-site/polkolonie/podstrona/1776858150808.jpg',
+    src: 'content-site/polkolonie/podstrona/1776858150808.webp',
     caption: 'Półkolonie',
   },
 ];
 
 /** Zdjęcia z katalogu treści (tymczasowe — do wymiany) */
 const SLIDE_IMAGES = [
-  'content-site/pakiety-urodzinowe/podstrona/DSC00002.JPG',
-  'content-site/pakiety-urodzinowe/podstrona/DSC00010.JPG',
-  'content-site/dzienny-opiekun/podstrona/IMG_20251118_085211.jpg',
+  'content-site/pakiety-urodzinowe/podstrona/DSC00002.webp',
+  'content-site/pakiety-urodzinowe/podstrona/DSC00010.webp',
+  'content-site/dzienny-opiekun/podstrona/IMG_20251118_085211.webp',
 ];
 
 const SLIDE_TEXTS = [
@@ -85,7 +85,7 @@ const OFFERS = [
   {
     slug: 'warsztaty-okazjonalne',
     label: 'Warsztaty okazjonalne',
-    image: 'content-site/warsztaty-okazjonalne/podstrona/1776859333132.JPG',
+    image: 'content-site/warsztaty-okazjonalne/podstrona/1776859333132.webp',
     description:
       'Kreatywne i sensoryczne warsztaty tematyczne — pachnące mydełka glicerynowe, malowana ceramika, mandale na kamieniach i sezonowe ozdoby świąteczne. Mamy też spotkania na Dzień Mamy, Babci czy 11 listopada.',
     featured: true,
@@ -93,17 +93,17 @@ const OFFERS = [
   {
     slug: 'warsztaty-w-kolorowych-raczkach',
     label: 'Warsztaty w Kolorowych Rączkach',
-    image: 'content-site/warsztaty-w-kolorowych-raczkach/podstrona/IMG-20251025-WA0017.jpg',
+    image: 'content-site/warsztaty-w-kolorowych-raczkach/podstrona/IMG-20251025-WA0017.webp',
   },
   {
     slug: 'zajecia-cykliczne-w-placowkach',
     label: 'Zajęcia cykliczne w placówkach',
-    image: 'content-site/zajecia-cykliczne-w-placowkach/podstrona/sensoplastyka(5).jpg',
+    image: 'content-site/zajecia-cykliczne-w-placowkach/podstrona/sensoplastyka(5).webp',
   },
   {
     slug: 'pakiety-urodzinowe',
     label: 'Pakiety urodzinowe',
-    image: 'content-site/pakiety-urodzinowe/podstrona/DSC05927.JPG',
+    image: 'content-site/pakiety-urodzinowe/podstrona/DSC05927.webp',
     description:
       'Tematyczne urodziny dopasowane do wieku jubilata — sensoplastyka i muzyka dla maluchów, magic masa, eksperymenty, mali piraci czy superbohaterowie dla starszaków. Ponad 10 motywów do wyboru, animator, tańce i foto strefa w pakiecie.',
     featured: true,
@@ -111,24 +111,28 @@ const OFFERS = [
   {
     slug: 'dzienny-opiekun',
     label: 'Dzienny opiekun',
-    image: 'content-site/dzienny-opiekun/podstrona/IMG_20251014_132654.jpg',
+    image: 'content-site/dzienny-opiekun/podstrona/IMG_20251014_132654.webp',
+    description:
+      'Kameralna opieka jak w domu: mała grupa, spokojny rytm dnia i indywidualne tempo malucha. Adaptację prowadzimy razem z Tobą, bez presji i pośpiechu, a na co dzień stawiamy na bliskość, bezpieczeństwo emocjonalne i partnerską współpracę z rodzicami.',
+    featured: true,
   },
   {
     slug: 'polkolonie',
     label: 'Półkolonie',
-    image: 'content-site/polkolonie/podstrona/1776858150808.jpg',
+    image: 'content-site/polkolonie/podstrona/1776858150808.webp',
   },
 ];
 
-function renderOfferCard(offer) {
+function renderOfferCard(offer, index = 0) {
   const isFeatured = Boolean(offer.featured);
   const descHtml =
     isFeatured && offer.description
       ? `<p class="homeOfertaCard__desc">${offer.description}</p>`
       : '';
   const featuredClass = isFeatured ? ' is-featured' : '';
+  const revealDir = index % 2 === 0 ? 'left' : 'right';
   return `
-    <a class="homeOfertaCard${featuredClass}" href="${offer.slug}" data-link data-reveal aria-label="${offer.label}">
+    <a class="homeOfertaCard${featuredClass}" href="${offer.slug}" data-link data-reveal="${revealDir}" aria-label="${offer.label}">
       <div class="homeOfertaCard__media">
         <img
           class="homeOfertaCard__img"
@@ -183,9 +187,10 @@ const VALUES = [
   },
 ];
 
-function renderValueItem(v) {
+function renderValueItem(v, index = 0) {
+  const revealDir = index % 2 === 0 ? 'left' : 'right';
   return `
-    <li class="homeWartosciItem" data-reveal>
+    <li class="homeWartosciItem" data-reveal="${revealDir}">
       <span class="homeWartosciItem__icon homeWartosciItem__icon--${v.color}" aria-hidden="true">
         ${v.Icon()}
       </span>
@@ -232,11 +237,11 @@ export async function renderHome() {
       <article class="homeHeroBanner" aria-label="O nas, slajd ${i + 1}">
         <div class="homeHeroBanner__inner">
           <div class="homeHeroBanner__textCol">
-            <div class="homeHeroBanner__text">
+            <div class="homeHeroBanner__text"${i === 0 ? ' data-reveal="left" data-defer-boot-reveal' : ''}>
               ${heroMainTitle(i === 0)}
               <p class="homeHeroBanner__lead">${copy}</p>
               <div class="homeHeroBanner__actions">
-                <a class="btn btnPrimary homeHeroCta" href="#dlaczego-tytul" data-link>
+                <a class="btn btnPrimary homeHeroCta" href="#oferta" data-link>
                   <span>Zobacz zajęcia</span>
                   ${iconArrow()}
                 </a>
@@ -246,7 +251,7 @@ export async function renderHome() {
               </div>
             </div>
           </div>
-          <div class="homeHeroBanner__media" aria-hidden="true">
+          <div class="homeHeroBanner__media" aria-hidden="true"${i === 0 ? ' data-reveal="right" data-defer-boot-reveal' : ''}>
             <img
               class="homeHeroBanner__img"
               src="${SLIDE_IMAGES[i]}"
@@ -264,16 +269,16 @@ export async function renderHome() {
   ).join('');
 
   const cardsHtml = FOUR_CARDS.map(
-    (c) => `
-    <div class="offerCard" data-reveal>
+    (c, idx) => `
+    <div class="offerCard" data-reveal="${idx % 2 === 0 ? 'left' : 'right'}">
       <div class="iconBubble iconBubble--${c.icon}">${c.Icon()}</div>
       <h3>${c.title}</h3>
       <p>${c.text}</p>
     </div>`,
   ).join('');
 
-  const offersHtml = OFFERS.map(renderOfferCard).join('');
-  const valuesHtml = VALUES.map(renderValueItem).join('');
+  const offersHtml = OFFERS.map((o, i) => renderOfferCard(o, i)).join('');
+  const valuesHtml = VALUES.map((v, i) => renderValueItem(v, i)).join('');
 
   const KONTAKT_CHECKS = [
     'Prosta i szybka rezerwacja online',
@@ -328,7 +333,7 @@ export async function renderHome() {
 
       <section class="section" aria-labelledby="dlaczego-tytul">
         <div class="container">
-          <div class="sectionHeader sectionHeader--center" data-reveal>
+          <div class="sectionHeader sectionHeader--center" data-reveal="down" data-defer-boot-reveal>
             <div>
               <h2 class="sectionTitle" id="dlaczego-tytul" style="max-width: 38ch; margin-left: auto; margin-right: auto">
                 Tworzymy przestrzeń, w której dzieci czują się bezpieczne, ważne i swobodnie się rozwijają. Dlaczego wybierają nas rodzice?
@@ -349,7 +354,7 @@ export async function renderHome() {
           <div class="offersGrid">
             ${cardsHtml}
           </div>
-          <p class="homeZnami" data-reveal>
+          <p class="homeZnami" data-reveal="down">
             Z nami Twoje dziecko rośnie, rozwija się i jest naprawdę zaopiekowane.
           </p>
         </div>
@@ -357,7 +362,7 @@ export async function renderHome() {
 
       <section class="section homeOferta" id="oferta" aria-labelledby="oferta-tytul">
         <div class="container">
-          <div class="sectionHeader sectionHeader--center" data-reveal>
+          <div class="sectionHeader sectionHeader--center" data-reveal="down">
             <h2 class="sectionTitle" id="oferta-tytul">
               Nasze <span class="textAccentBlue">zajęcia</span>
             </h2>
@@ -370,7 +375,7 @@ export async function renderHome() {
 
       <section class="section homeWartosci" id="wartosci" aria-labelledby="wartosci-tytul">
         <div class="container">
-          <div class="sectionHeader sectionHeader--center" data-reveal>
+          <div class="sectionHeader sectionHeader--center" data-reveal="down">
             <h2 class="sectionTitle" id="wartosci-tytul">
               Rozwój przez zabawę, <span class="textAccentCoral">radość</span> na co dzień!
             </h2>
@@ -392,7 +397,7 @@ export async function renderHome() {
                 ${iconArrow()}
               </a>
             </div>
-            <div class="homeGaleriaMosaic" data-reveal>
+            <div class="homeGaleriaMosaic" data-reveal="right">
               ${galleryThumbsHtml}
             </div>
           </div>
@@ -403,7 +408,7 @@ export async function renderHome() {
       <div class="homeRKWrapper">
         <img
           class="homeRKWrapper__bg"
-          src="content-site/warsztaty-w-kolorowych-raczkach/podstrona/IMG-20251025-WA0070.jpg"
+          src="content-site/warsztaty-w-kolorowych-raczkach/podstrona/IMG-20251025-WA0070.webp"
           alt=""
           loading="lazy"
           decoding="async"
@@ -415,11 +420,11 @@ export async function renderHome() {
 
         <section class="section homeRezerwacje" id="rezerwacje" aria-labelledby="rezerwacje-tytul">
           <div class="container">
-            <div class="sectionHeader sectionHeader--center" data-reveal>
+            <div class="sectionHeader sectionHeader--center" data-reveal="down">
               <h2 class="sectionTitle" id="rezerwacje-tytul">Rezerwacje</h2>
               <p class="sectionLead">Wybierz dogodny termin i zarezerwuj miejsce online.</p>
             </div>
-            <div class="homeRezerwacjeEmbed" data-reveal>
+            <div class="homeRezerwacjeEmbed" data-reveal="down">
               <div class="homeRezerwacjeEmbed__placeholder">
                 ${iconCalendar()}
                 <p>Miejsce na iframe Calendesk</p>
@@ -528,7 +533,7 @@ export async function renderHome() {
     </div>
   `);
 
-  // Pre-decode obrazów kafelków oferty w idle time — dekodowanie JPG-ów
+  // Pre-decode obrazów kafelków oferty w idle time — dekodowanie zdjęć (WebP)
   // odbywa się przed momentem reveal-on-scroll, dzięki czemu cross-fade
   // (opacity 0→1 + translateY) nie konkuruje na main-threadzie z dekoderem
   // obrazów i nie generuje przycięć podczas wjazdu kafelków.

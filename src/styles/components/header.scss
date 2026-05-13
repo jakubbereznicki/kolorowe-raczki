@@ -8,6 +8,29 @@
   backdrop-filter: blur(12px);
   background: rgba(255, 250, 243, 0.88);
   border-bottom: 1px solid rgba(47, 157, 92, 0.12);
+
+  // Desktop touchpad/mysz: przy scroll w dół pasek chowa się (klasa .siteHeader--scrollHidden w nav.js).
+  @include up($bpMd) {
+    transition:
+      transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.28s ease;
+  }
+
+  &.siteHeader--scrollHidden {
+    @include up($bpMd) {
+      transform: translate3d(0, -105%, 0);
+      pointer-events: none;
+      border-bottom-color: transparent;
+      backdrop-filter: none;
+      background: rgba(255, 250, 243, 0.94);
+
+      // Nadpisuje `home.scss` → `.is-visible[data-reveal="down"] { transform: translate(0,0) }`
+      // (ten sam nagłówek ma `data-reveal="down"`). Bez tego ukrywanie nie działało.
+      &.is-visible {
+        transform: translate3d(0, -105%, 0);
+      }
+    }
+  }
 }
 
 .headerInner {

@@ -8,49 +8,49 @@ const CREATIVE_WORKSHOPS = [
     title: 'Tęczowe Kostki Glicerynowe',
     desc: 'Własnoręczne tworzenie pachnących i kolorowych mydełek w fantazyjnych kształtach.',
     accent: 'coral',
-    img: BASE + '1776859333215.jpg',
+    img: BASE + '1776859333215.webp',
   },
   {
     title: 'Aromatyczne Płótna',
     desc: 'Projektowanie i malowanie unikalnych wzorów na ekologicznych torbach bawełnianych.',
     accent: 'green',
-    img: BASE + 'IMG_7284.jpg',
+    img: BASE + 'IMG_7284.webp',
   },
   {
     title: 'Laboratorium Naturalnego Piękna',
     desc: 'Warsztaty tworzenia bezpiecznych, domowych kosmetyków z naturalnych składników.',
     accent: 'sky',
-    img: BASE + '1776859333349.jpg',
+    img: BASE + '1776859333349.webp',
   },
   {
     title: 'Sensoplastyczna Kraina Wyobraźni',
     desc: 'Wielozmysłowa przygoda z kolorami i teksturami dla najmłodszych odkrywców.',
     accent: 'yellow',
-    img: BASE + '1776859333132.jpg',
+    img: BASE + '1776859333132.webp',
   },
   {
     title: 'Mali Odkrywcy Skarbów Ziemi',
     desc: 'Fascynujące zajęcia geologiczne, podczas których poznajemy tajemnice minerałów i skał.',
     accent: 'sky',
-    img: BASE + 'IMG_7285.jpg',
+    img: BASE + 'IMG_7285.webp',
   },
   {
     title: 'Zapachowa Magia Domu',
     desc: 'Komponowanie własnych zapachów i tworzenie stylowych dyfuzorów z patyczkami.',
     accent: 'coral',
-    img: BASE + '1776859333631.jpg',
+    img: BASE + '1776859333631.webp',
   },
   {
     title: 'Artystyczne Kubki i Ceramika',
     desc: 'Warsztaty malowania porcelany, dzięki którym każdy przedmiot staje się dziełem sztuki.',
     accent: 'green',
-    img: BASE + '1776859333596.jpg',
+    img: BASE + '1776859333596.webp',
   },
   {
     title: 'Malowana Natura na Kamieniach',
     desc: 'Wyciszające tworzenie kolorowych mandali na gładkich kamieniach rzecznych.',
     accent: 'yellow',
-    img: BASE + 'IMG_7285.jpg',
+    img: BASE + 'IMG_7285.webp',
   },
 ];
 
@@ -136,7 +136,7 @@ export function renderWarsztatyOkazjonalne() {
           <div class="warsHero__imgWrap" data-reveal="right">
             <img
               class="warsHero__img"
-              src="${BASE}1776859333132.jpg"
+              src="${BASE}1776859333132.webp"
               alt="Warsztaty okazjonalne – Kolorowe Rączki"
               loading="eager"
               decoding="async"
@@ -190,7 +190,7 @@ export function renderWarsztatyOkazjonalne() {
               </p>
               <div class="warsCol__photo">
                 <img
-                  src="${BASE}1776859517605.jpg"
+                  src="${BASE}1776859517605.webp"
                   alt="Urodziny z Kolorowe Rączki"
                   loading="lazy"
                   decoding="async"
@@ -214,7 +214,7 @@ export function renderWarsztatyOkazjonalne() {
                     <p class="warsOccItem__desc">Tworzenie unikalnych upominków (np. biżuterii, ramek lub lasów w słoiku) z okazji Dnia Mamy.</p>
                   </div>
                   <div class="warsOccItem__photo">
-                    <img src="${BASE}1776859333631.jpg" alt="Serce dla Mamy i Taty" loading="lazy" decoding="async"/>
+                    <img src="${BASE}1776859333631.webp" alt="Serce dla Mamy i Taty" loading="lazy" decoding="async"/>
                   </div>
                 </li>
                 <li class="warsOccItem">
@@ -223,7 +223,7 @@ export function renderWarsztatyOkazjonalne() {
                     <p class="warsOccItem__desc">Komponowanie autorskich mieszanek herbat i ozdabianie słoiczków jako prezentów na Dzień Babci i Dziadka.</p>
                   </div>
                   <div class="warsOccItem__photo">
-                    <img src="${BASE}1776859333349.jpg" alt="Herbaciane Opowieści" loading="lazy" decoding="async"/>
+                    <img src="${BASE}1776859333349.webp" alt="Herbaciane Opowieści" loading="lazy" decoding="async"/>
                   </div>
                 </li>
                 <li class="warsOccItem">
@@ -232,7 +232,7 @@ export function renderWarsztatyOkazjonalne() {
                     <p class="warsOccItem__desc">Warsztaty patriotyczne z okazji 11 listopada: tworzenie nowoczesnych kotylionów, przypinek i patriotycznych dekoracji.</p>
                   </div>
                   <div class="warsOccItem__photo">
-                    <img src="${BASE}IMG_7745.jpg" alt="Biało-Czerwone Inspiracje" loading="lazy" decoding="async"/>
+                    <img src="${BASE}IMG_7745.webp" alt="Biało-Czerwone Inspiracje" loading="lazy" decoding="async"/>
                   </div>
                 </li>
               </ul>
@@ -253,7 +253,7 @@ export function renderWarsztatyOkazjonalne() {
                 <div class="warsHoliItem__photo">
                   <img
                     class="warsHoliItem__img"
-                    src="${BASE}IMG_7398.jpg"
+                    src="${BASE}IMG_7398.webp"
                     alt="Wiosna w Kolorze – warsztaty wielkanocne"
                     loading="lazy"
                     decoding="async"
@@ -297,13 +297,13 @@ export function renderWarsztatyOkazjonalne() {
 
           <div class="warsCta__photos" data-reveal="right">
             <div class="warsCta__photo warsCta__photo--1">
-              <img src="${BASE}1776859517478.jpg" alt="" loading="lazy" decoding="async"/>
+              <img src="${BASE}1776859517478.webp" alt="" loading="lazy" decoding="async"/>
             </div>
             <div class="warsCta__photo warsCta__photo--2">
-              <img src="${BASE}IMG_7702.jpg" alt="" loading="lazy" decoding="async"/>
+              <img src="${BASE}IMG_7702.webp" alt="" loading="lazy" decoding="async"/>
             </div>
             <div class="warsCta__photo warsCta__photo--3">
-              <img src="${BASE}1776859517769.jpg" alt="" loading="lazy" decoding="async"/>
+              <img src="${BASE}1776859517769.webp" alt="" loading="lazy" decoding="async"/>
             </div>
             <div class="warsCta__rainbow" aria-hidden="true">
               <svg viewBox="0 0 140 70" fill="none">

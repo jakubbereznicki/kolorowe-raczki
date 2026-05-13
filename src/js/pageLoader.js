@@ -1,3 +1,6 @@
+/** Tymczasowo: `true` = loader zostaje na ekranie. Ustaw `false`, gdy przywrócisz zamykanie. */
+const KEEP_LOADER_VISIBLE = false;
+
 /** Napis jak w brandingu; każda litera — kolor z palety (cykl). */
 const LOADER_PHRASE = 'Kolorowe rączki';
 const CHAR_COLORS = ['#7aa335', '#f0c14b', '#2a8cc8', '#e85d4d'];
@@ -42,6 +45,9 @@ export async function runWithPageLoader(appBoot) {
   const root = document.getElementById('pageLoader');
   if (!root) {
     await appBoot();
+    queueMicrotask(() => {
+      document.dispatchEvent(new CustomEvent('pageLoaderDismissed', { bubbles: true }));
+    });
     return;
   }
 
@@ -75,23 +81,26 @@ export async function runWithPageLoader(appBoot) {
     });
   }
 
-  root.classList.add('pageLoader--done');
   document.body.removeAttribute('aria-busy');
   document.documentElement.classList.remove('pageLoader-active');
 
-  await new Promise((resolve) => {
-    const t = setTimeout(resolve, EXIT_TRANSITION_MS + 80);
-    root.addEventListener(
-      'transitionend',
-      () => {
-        clearTimeout(t);
-        resolve();
-      },
-      { once: true },
-    );
-  });
+  if (!KEEP_LOADER_VISIBLE) {
+    root.classList.add('pageLoader--done');
+    await new Promise((resolve) => {
+      const t = setTimeout(resolve, EXIT_TRANSITION_MS + 80);
+      root.addEventListener(
+        'transitionend',
+        () => {
+          clearTimeout(t);
+          resolve();
+        },
+        { once: true },
+      );
+    });
 
-  root.remove();
+    root.remove();
+    document.dispatchEvent(new CustomEvent('pageLoaderDismissed', { bubbles: true }));
+  }
 
   if (bootError) throw bootError;
 }
