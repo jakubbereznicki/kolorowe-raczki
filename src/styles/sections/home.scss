@@ -1660,12 +1660,16 @@
   align-items: flex-start; // tekst dosunięty do lewej krawędzi 40fr kolumny (nie centrowany)
   min-height: 100%;
   background: transparent;
-  // Lewy padding tak dobrany, żeby treść tekstowa zaczynała się DOKŁADNIE
-  // pod logo navbara (.container = min(100% - 32px, 1600px), centrowany).
-  // - Viewport >= 1600px: padding = (100vw - 1600) / 2 = boczny margines navbara.
-  // - Viewport <  1600px: padding = 16px = boczny padding navbara (32/2).
-  // Prawego paddingu nie ruszamy — przestrzeń do styku ze zdjęciem zostaje.
-  padding-left: max(16px, calc((100vw - 1600px) / 2));
+  // Lewy padding wyrównany z bocznym gutterem treści (80 / 40 / 20 px).
+  padding-left: max(#{$layout-gutter}, calc((100vw - #{$layout-max}) / 2));
+
+  @include down($bpMd) {
+    padding-left: max(#{$layout-gutter-tablet}, calc((100vw - #{$layout-max}) / 2));
+  }
+
+  @include down($bpSm) {
+    padding-left: max(#{$layout-gutter-mobile}, calc((100vw - #{$layout-max}) / 2));
+  }
 }
 
 .homeHeroBanner__text {

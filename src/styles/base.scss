@@ -1,4 +1,5 @@
 @use "./tokens" as *;
+@use "./mixins" as *;
 
 *,
 *::before,
@@ -58,8 +59,31 @@ button {
 }
 
 .container {
-  width: min(100% - 32px, $container);
+  width: min(100% - 32px, $layout-max);
   margin-inline: auto;
+}
+
+// Treść strony: max 1530px; boczny oddech zależny od breakpointu (przez szerokość).
+// Wyjątki: nawigacja, stopka, baner hero (homeAbout__container).
+.siteMain .container:not(.homeAbout__container) {
+  width: min(100% - #{$layout-gutter * 2}, $layout-max);
+  max-width: $layout-max;
+  margin-inline: auto;
+
+  @include down($bpMd) {
+    width: min(100% - #{$layout-gutter-tablet * 2}, $layout-max);
+  }
+
+  @include down($bpSm) {
+    width: min(100% - #{$layout-gutter-mobile * 2}, $layout-max);
+  }
+}
+
+.siteHeader .container,
+.siteFooter .container {
+  width: min(100% - 32px, $layout-max);
+  max-width: none;
+  padding-inline: 0;
 }
 
 .skipLink {

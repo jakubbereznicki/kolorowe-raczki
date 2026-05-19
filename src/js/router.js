@@ -21,6 +21,7 @@ import { renderPolitykaPrywatnosci } from '../pages/politykaPrywatnosci.js';
 import { renderOnas } from '../pages/onas.js';
 import { renderDziennyOpiekun } from '../pages/dziennyOpiekun.js';
 import { renderWarsztatyOkazjonalne } from '../pages/warsztatyOkazjonalne.js';
+import { renderPakietyUrodzinowe } from '../pages/pakietyUrodzinowe.js';
 import { refreshRevealOnScroll } from './revealOnScroll.js';
 import { initCalendar } from './calendar.js';
 import { initSlider } from './slider.js';
@@ -38,9 +39,11 @@ function buildRoutes(manifest) {
     { path: '/o-nas', title: 'O nas — Kolorowe Centrum', render: () => renderOnas() },
     { path: '/dzienny-opiekun', title: 'Dzienny Opiekun — Kolorowe Centrum', render: () => renderDziennyOpiekun() },
     { path: '/warsztaty-okazjonalne', title: 'Warsztaty Okazjonalne — Kolorowe Centrum', render: () => renderWarsztatyOkazjonalne() },
+    { path: '/pakiety-urodzinowe', title: 'Pakiety urodzinowe — Kolorowe Centrum', render: () => renderPakietyUrodzinowe() },
   ];
   for (const t of m) {
     if (!t.hasSub) continue;
+    if (t.slug === 'pakiety-urodzinowe') continue;
     out.push({
       path: `/${t.slug}`,
       title: `${t.label} — Kolorowe Centrum`,

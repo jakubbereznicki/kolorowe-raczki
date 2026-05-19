@@ -178,6 +178,9 @@ export function renderWarsztatyOkazjonalne() {
 
           <!-- URODZINY -->
           <div class="warsCol warsCol--birthday" data-reveal>
+            <img class="warsCol__bg" src="${BASE}1776859517605.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+            <div class="warsCol__overlay" aria-hidden="true"></div>
+            <div class="warsCol__inner">
             <div class="warsCol__head warsCol__head--coral">
               <span class="warsCol__headEmoji" aria-hidden="true">🎁</span>
               <h2 class="warsCol__headTitle">Urodziny z Kolorowe Rączki</h2>
@@ -198,10 +201,14 @@ export function renderWarsztatyOkazjonalne() {
                 />
               </div>
             </div>
+            </div>
           </div>
 
           <!-- WARSZTATY OKOLICZNOŚCIOWE I SEZONOWE -->
           <div class="warsCol warsCol--occasional" data-reveal>
+            <img class="warsCol__bg" src="${BASE}1776859333631.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+            <div class="warsCol__overlay" aria-hidden="true"></div>
+            <div class="warsCol__inner">
             <div class="warsCol__head warsCol__head--coral">
               <span class="warsCol__headEmoji" aria-hidden="true">✨</span>
               <h2 class="warsCol__headTitle">Warsztaty Okolicznościowe i Sezonowe</h2>
@@ -237,10 +244,14 @@ export function renderWarsztatyOkazjonalne() {
                 </li>
               </ul>
             </div>
+            </div>
           </div>
 
           <!-- WIELKANOC I BOŻE NARODZENIE -->
           <div class="warsCol warsCol--holiday" data-reveal>
+            <img class="warsCol__bg" src="${BASE}IMG_7398.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+            <div class="warsCol__overlay" aria-hidden="true"></div>
+            <div class="warsCol__inner">
             <div class="warsCol__head warsCol__head--green">
               <span class="warsCol__headEmoji" aria-hidden="true">🌿</span>
               <h2 class="warsCol__headTitle">Wielkanoc i Boże Narodzenie</h2>
@@ -266,6 +277,7 @@ export function renderWarsztatyOkazjonalne() {
                 <p class="warsHoliItem__desc">Magiczne zajęcia z dekorowania bombek, tworzenia naturalnych łańcuchów i ozdób z masy solnej lub drewna.</p>
               </div>
 
+            </div>
             </div>
           </div>
 
