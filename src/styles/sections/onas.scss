@@ -144,7 +144,7 @@ $team-photo-ring: 10px;
 }
 
 .teamCard__role {
-  font-size: 14px;
+  @include subpage-body-size;
   font-weight: 700;
   color: var(--ac-line);
   line-height: 1.4;
@@ -152,7 +152,7 @@ $team-photo-ring: 10px;
 }
 
 .teamCard__roleExtra {
-  font-size: 13px;
+  @include subpage-body-size;
   font-weight: 700;
   color: $muted;
   line-height: 1.4;
@@ -174,7 +174,7 @@ $team-photo-ring: 10px;
 
 .teamCard__para {
   margin: 0;
-  font-size: 14.5px;
+  @include subpage-body-size;
   font-weight: 600;
   color: $ink;
   line-height: 1.7;

@@ -14,3 +14,12 @@ $bpLg: 1920px;
   }
 }
 
+// Treść podstron: min. 16px na desktopie, mniejsza na mobile
+@mixin subpage-body-size {
+  font-size: 16px;
+
+  @include down($bpMd) {
+    font-size: 14px;
+  }
+}
+

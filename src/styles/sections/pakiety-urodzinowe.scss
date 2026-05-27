@@ -6,7 +6,7 @@
 // ══════════════════════════════════════════════════════════════════════════════
 
 .puPage {
-  font-size: 15px;
+  @include subpage-body-size;
 }
 
 // ── HERO ──────────────────────────────────────────────────────────────────────
@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 15px;
+  @include subpage-body-size;
   font-weight: 700;
   color: $muted;
   margin-bottom: clamp(20px, 3vw, 32px);
@@ -78,7 +78,7 @@
 
 .puHero__kicker {
   margin: 0;
-  font-size: clamp(15px, 1.4vw, 17px);
+  @include subpage-body-size;
   font-weight: 900;
   color: $ink;
   letter-spacing: 0.04em;
@@ -96,7 +96,7 @@
 
 .puHero__sub {
   margin: 0;
-  font-size: clamp(15px, 1.35vw, 17px);
+  @include subpage-body-size;
   font-weight: 600;
   color: $muted;
   line-height: 1.65;
@@ -189,7 +189,7 @@
 
 .puCard__desc {
   margin: 0;
-  font-size: 15px;
+  @include subpage-body-size;
   font-weight: 600;
   color: $muted;
   line-height: 1.65;
@@ -204,7 +204,7 @@
   background: rgba(141, 182, 65, 0.16);
   border: 1px solid rgba(141, 182, 65, 0.32);
   color: $green-800;
-  font-size: 15px;
+  @include subpage-body-size;
   font-weight: 800;
 }
 
@@ -497,7 +497,7 @@
 
 .puCta__lead {
   margin: 0;
-  font-size: clamp(15px, 1.35vw, 17px);
+  @include subpage-body-size;
   font-weight: 600;
   color: $muted;
   line-height: 1.65;

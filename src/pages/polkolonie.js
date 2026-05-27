@@ -85,17 +85,6 @@ function dayCard(step) {
     </article>`;
 }
 
-function awaitsItem(item) {
-  const ac = ACCENTS[item.accent];
-  return `
-    <li class="pkAwaits__item">
-      <span class="pkAwaits__icon" style="background:${ac.bg};color:${ac.color}">
-        ${ICONS[item.icon]}
-      </span>
-      <span class="pkAwaits__label">${item.label}</span>
-    </li>`;
-}
-
 function turnCard(t) {
   const ac = ACCENTS[t.accent];
   return `
@@ -109,7 +98,6 @@ export function renderPolkolonie() {
   const offerHtml = OFFER.map(offerCard).join('');
   const dayHtml = DAY_STEPS.map(dayCard).join('');
   const turnsHtml = TURNS.map(turnCard).join('');
-  const awaitsHtml = OFFER.map(awaitsItem).join('');
 
   return elFromHTML(`
     <div class="pkPage">
@@ -188,18 +176,6 @@ export function renderPolkolonie() {
           <div class="pkDay__cards">
             ${dayHtml}
           </div>
-        </div>
-      </section>
-
-      <section class="section pkAwaits" aria-labelledby="pk-awaits-title">
-        <div class="container">
-          <h2 class="pkSectionTitle pkSectionTitle--center" id="pk-awaits-title" data-reveal>
-            Co czeka na uczestników?
-            <span class="pkSectionSpark" aria-hidden="true">✨</span>
-          </h2>
-          <ul class="pkAwaits__list" role="list">
-            ${awaitsHtml}
-          </ul>
         </div>
       </section>
 

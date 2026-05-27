@@ -48,7 +48,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 13px;
+  @include subpage-body-size;
   font-weight: 700;
   color: $muted;
   margin-bottom: 20px;
@@ -119,7 +119,7 @@
 
 .doHero__lead {
   margin: 0 0 14px;
-  font-size: clamp(15px, 1.3vw, 19px);
+  @include subpage-body-size;
   font-weight: 800;
   color: $ink;
   line-height: 1.4;
@@ -131,7 +131,7 @@
 
 .doHero__sub {
   margin: 0;
-  font-size: 15px;
+  @include subpage-body-size;
   font-weight: 600;
   color: $muted;
   line-height: 1.75;
@@ -176,6 +176,7 @@
   flex-direction: column;
   gap: 10px;
   min-width: 0;
+  padding: 10px;
 }
 
 .doCard__top {
@@ -208,11 +209,15 @@
   letter-spacing: -0.02em;
   line-height: 1.35;
   padding-top: 3px;
+
+  @include up($bpMd) {
+    font-size: 18px;
+  }
 }
 
 .doCard__text {
   margin: 0;
-  font-size: 15px;
+  @include subpage-body-size;
   font-weight: 600;
   color: $muted;
   line-height: 1.7;
@@ -307,7 +312,7 @@
 
 .doSubsidy__lead {
   margin: 0 0 24px;
-  font-size: 14.5px;
+  @include subpage-body-size;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.82);
   line-height: 1.7;
@@ -326,7 +331,7 @@
   display: flex;
   gap: 12px;
   align-items: flex-start;
-  font-size: 14px;
+  @include subpage-body-size;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
@@ -352,7 +357,7 @@
 
 .doSubsidy__cta {
   margin: 0;
-  font-size: 14px;
+  @include subpage-body-size;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.7;
@@ -410,7 +415,7 @@
 
   p {
     margin: 0;
-    font-size: 14px;
+    @include subpage-body-size;
     font-weight: 600;
     color: $ink;
     line-height: 1.75;
@@ -463,14 +468,14 @@
 }
 
 .doPricing__label {
-  font-size: 14px;
+  @include subpage-body-size;
   font-weight: 700;
   color: $ink;
   line-height: 1.4;
 }
 
 .doPricing__value {
-  font-size: 15px;
+  @include subpage-body-size;
   font-weight: 800;
   color: $ink;
   white-space: nowrap;

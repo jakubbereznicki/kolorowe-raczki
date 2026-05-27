@@ -120,6 +120,9 @@ const OFFERS = [
     slug: 'polkolonie',
     label: 'Półkolonie',
     image: 'content-site/polkolonie/podstrona/1776858150808.webp',
+    description:
+      'Sportowo-artystyczne półkolonie letnie dla dzieci 6–12 lat: gry terenowe, wycieczki, zajęcia sportowe i warsztaty artystyczne w kameralnej grupie. Aktywny program pełen radości, który rozwija sprawność fizyczną i wyobraźnię — liczba miejsc ograniczona!',
+    featured: true,
   },
 ];
 
