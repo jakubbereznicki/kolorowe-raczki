@@ -36,7 +36,7 @@ const MEMBERS = [
   {
     id: 'veronika',
     name: 'Veronika Sopilniak',
-    photo: 'veronika.webp',
+    photo: 'iwona.webp',
     role: 'Opiekun dzienny – Kolorowe Rączki',
     roleExtra: null,
     accent: 'sky',
@@ -50,7 +50,7 @@ const MEMBERS = [
   {
     id: 'iwona',
     name: 'Iwona Juszczyk',
-    photo: 'iwona.webp',
+    photo: 'veronika.webp',
     role: 'Opiekun dzienny z ukończonym kursem opiekuna dziennego',
     roleExtra: 'Wieloletnie doświadczenie w pracy z najmłodszymi dziećmi',
     accent: 'yellow',

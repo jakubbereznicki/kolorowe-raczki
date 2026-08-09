@@ -279,10 +279,6 @@ export function renderDziennyOpiekun() {
                   <span class="doPricing__label">Wyżywienie</span>
                   <span class="doPricing__value">14 zł / dzień</span>
                 </div>
-                <div class="doPricing__row">
-                  <span class="doPricing__label">Wpisowe (jednorazowe)</span>
-                  <span class="doPricing__value">500 zł</span>
-                </div>
               </div>
             </div>
 
