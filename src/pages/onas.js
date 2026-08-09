@@ -60,6 +60,32 @@ const MEMBERS = [
       'Specjalizuje się w podejściu opartym na rodzicielstwie bliskościowym, stawiając na budowanie relacji, poczucia bezpieczeństwa oraz indywidualne podejście do każdego dziecka.',
     ],
   },
+  {
+    id: 'adrianna',
+    name: 'Adrianna Drzewiecka',
+    photo: 'adrianna.webp',
+    role: 'Opiekun dzienny z pasją i miłością do dzieci',
+    roleExtra: null,
+    accent: 'purple',
+    paragraphs: [
+      'Posiada dwuletnie doświadczenie w pracy w prywatnym żłobku, gdzie z ogromną troską dba o bezpieczeństwo maluchów, wspiera ich codzienny rozwój oraz z cierpliwością pomaga im w zdobywaniu samodzielności i odkrywaniu nowych umiejętności. Bliski kontakt z dziećmi towarzyszy jej od najmłodszych lat, co ukształtowało w niej głęboką empatię oraz naturalne, indywidualne podejście do potrzeb każdego dziecka.',
+      'Ukończyła profesjonalny kurs opiekuna w żłobku, dzięki któremu zdobyła solidną wiedzę z zakresu prawidłowej opieki, organizacji rozwijających zabaw oraz tworzenia bezpiecznej, przyjaznej przestrzeni.',
+      'W swojej codziennej pracy kieruje się przede wszystkim miłością do maluchów. Tworzy ciepłą atmosferę pełną zaufania i akceptacji, w której dzieci czują się kochane, ważne i bezpieczne, a rodzice mogą być spokojni o swoje pociechy. Uważa, że budowanie dobrych, otwartych relacji z rodzicami jest kluczem do harmonijnego rozwoju dziecka.',
+    ],
+  },
+  {
+    id: 'krystyna',
+    name: 'Khrystyna Dub',
+    photo: 'krystyna.webp',
+    role: 'Opiekun dzienny – Kolorowe Rączki',
+    roleExtra: 'Z wykształcenia jest farmaceutą, co daje jej solidne podstawy z zakresu zdrowia, profilaktyki oraz dbania o szeroko pojęty dobrostan najmłodszych',
+    accent: 'teal',
+    paragraphs: [
+      'Obecnie pełni funkcję opiekuna dziennego. Ukończyła kurs opiekunki w żłobku, dzięki któremu zdobyła wiedzę i merytoryczne przygotowanie do pracy z maluchami. Jest także certyfikowanym trenerem logorytmiki.',
+      'W codziennej pracy chętnie wykorzystuje zabawy muzyczno-ruchowe, rytmikę oraz ćwiczenia wspierające rozwój mowy, koordynację ruchową i koncentrację dzieci. Ogromnym atutem w jej pracy jest także osobiste doświadczenie rodzicielskie – prywatnie jest mamą 3-letniego dziecka. Dzięki temu doskonale rozumie emocje i potrzeby maluchów oraz wie, jak ważna jest cierpliwość, bliskość i poczucie bezpieczeństwa.',
+      'W pracy z dziećmi stawia na indywidualne podejście, uważność oraz tworzenie ciepłej, przyjaznej atmosfery. Wierzy, że poprzez zabawę, ruch, muzykę i codzienne aktywności można najpiękniej wspierać naturalny rozwój dziecka, budując jego samodzielność, pewność siebie oraz poczucie własnej wartości.',
+    ],
+  },
 ];
 
 const ACCENTS = {
@@ -67,6 +93,8 @@ const ACCENTS = {
   coral:  { pill: '#ffe8e5', pillText: '#b5342a', line: '#e85d4d', bg: 'rgba(232,93,77,0.05)'   },
   sky:    { pill: '#e0f2fb', pillText: '#1a6e9e', line: '#3aa3d9', bg: 'rgba(58,163,217,0.05)'  },
   yellow: { pill: '#fff6dd', pillText: '#856500', line: '#f0c14b', bg: 'rgba(240,193,75,0.06)'  },
+  purple: { pill: '#f0e8f8', pillText: '#5c3d8f', line: '#9b6fd4', bg: 'rgba(155,111,212,0.05)' },
+  teal:   { pill: '#e0f5f0', pillText: '#1a6b5c', line: '#3db89a', bg: 'rgba(61,184,154,0.05)' },
 };
 
 // Akcenty graficzne (stonowane, za treścią).
@@ -75,6 +103,8 @@ const DECO_SHAPES = {
   coral:  `<svg class="teamCard__deco" viewBox="0 0 80 80" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><rect x="4" y="4" width="72" height="72" rx="20" fill="none" stroke="#e85d4d" stroke-width="1.75" stroke-dasharray="6 6" opacity=".18"/></svg>`,
   sky:    `<svg class="teamCard__deco" viewBox="0 0 80 80" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><polygon points="40,4 76,60 4,60" fill="none" stroke="#3aa3d9" stroke-width="1.75" stroke-dasharray="6 6" opacity=".18"/></svg>`,
   yellow: `<svg class="teamCard__deco" viewBox="0 0 80 80" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path d="M40 6 l9 25h26l-21 15 8 25-22-16-22 16 8-25L5 31h26z" fill="none" stroke="#f0c14b" stroke-width="1.75" stroke-dasharray="5 5" opacity=".18"/></svg>`,
+  purple: `<svg class="teamCard__deco" viewBox="0 0 80 80" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><ellipse cx="40" cy="40" rx="36" ry="24" fill="none" stroke="#9b6fd4" stroke-width="1.75" stroke-dasharray="6 6" opacity=".18"/></svg>`,
+  teal:   `<svg class="teamCard__deco" viewBox="0 0 80 80" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path d="M8 40 Q40 8 72 40 Q40 72 8 40" fill="none" stroke="#3db89a" stroke-width="1.75" stroke-dasharray="6 6" opacity=".18"/></svg>`,
 };
 
 function buildCard(member, idx) {
